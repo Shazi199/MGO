@@ -1,0 +1,4 @@
+devMode=false
+jdbcUrl=jdbc:mysql://localhost/mgo
+user=localuser
+password=localuser
