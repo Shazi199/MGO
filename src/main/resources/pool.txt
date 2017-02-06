@@ -1,0 +1,18 @@
+[
+	{
+		"id":1,
+		"name":"普通",
+		"group":[
+			{
+				"p":50,
+				"type":"servent",
+				"group":[1]
+			},
+			{
+				"p":50,
+				"type":"craft",
+				"group":[1]
+			}
+		]
+	}
+]

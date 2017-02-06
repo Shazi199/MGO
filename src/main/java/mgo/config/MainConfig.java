@@ -17,6 +17,7 @@ import mgo.account.CheckLoginInterceptor;
 import mgo.common.GlobalAttributeInterceptor;
 import mgo.index.IndexRoutes;
 import mgo.model._MappingKit;
+import mgo.summon.SummonRoutes;
 
 public class MainConfig extends JFinalConfig {
 
@@ -24,12 +25,14 @@ public class MainConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
 		PropKit.use("config.txt");
 		me.setDevMode(PropKit.getBoolean("devMode"));
+		Data.instance.init();
 	}
 
 	@Override
 	public void configRoute(Routes me) {
 		me.add(new IndexRoutes());
 		me.add(new AccountRoutes());
+		me.add(new SummonRoutes());
 	}
 
 	@Override
