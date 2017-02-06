@@ -14,6 +14,7 @@ import com.jfinal.template.Engine;
 
 import mgo.account.AccountRoutes;
 import mgo.account.CheckLoginInterceptor;
+import mgo.common.GlobalAttributeInterceptor;
 import mgo.index.IndexRoutes;
 import mgo.model._MappingKit;
 
@@ -51,6 +52,7 @@ public class MainConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		me.addGlobalActionInterceptor(new CheckLoginInterceptor());
+		me.addGlobalActionInterceptor(new GlobalAttributeInterceptor());
 	}
 
 	@Override

@@ -1,0 +1,24 @@
+#define navbar()
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">MGO</a>
+		</div>
+		#if(currentUser != null)
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><p class="navbar-text">#(currentUser.nickname ??)</p></li>
+				<li><button id="logout" type="button" class="btn btn-info navbar-btn">退出</button></li>
+			</ul>
+		</div>
+		#end
+	</div>
+</nav>
+<script type="text/javascript">
+	$("#logout").click(function(e){
+		$.post("account/logout",function(data){
+			location.reload();
+		});
+	});
+</script>
+#end
