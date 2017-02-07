@@ -6,12 +6,13 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import mgo.pool.Pool;
 import mgo.util.DataLoader;
 
 public class Data {
 	public Map<Integer, JSONObject> serventData;
 	public Map<Integer, JSONObject> craftData;
-	public Map<Integer, JSONObject> poolData;
+	public Map<Integer, Pool> poolData;
 
 	public static final Data instance = new Data();
 
@@ -21,7 +22,7 @@ public class Data {
 	public void init() {
 		serventData = generateIDMap(DataLoader.loadArrayData("servent.txt"));
 		craftData = generateIDMap(DataLoader.loadArrayData("craft.txt"));
-		poolData = generateIDMap(DataLoader.loadArrayData("pool.txt"));
+		poolData = generatePoolIDMap(DataLoader.loadArrayData("pool.txt"));
 	}
 
 	private Map<Integer, JSONObject> generateIDMap(JSONArray data) {
@@ -29,6 +30,15 @@ public class Data {
 		for (int i = 0; i < data.size(); i++) {
 			JSONObject obj = data.getJSONObject(i);
 			result.put(obj.getInteger("id"), obj);
+		}
+		return result;
+	}
+
+	private Map<Integer, Pool> generatePoolIDMap(JSONArray data) {
+		Map<Integer, Pool> result = new HashMap<Integer, Pool>();
+		for (int i = 0; i < data.size(); i++) {
+			JSONObject obj = data.getJSONObject(i);
+			result.put(obj.getInteger("id"), new Pool(obj));
 		}
 		return result;
 	}

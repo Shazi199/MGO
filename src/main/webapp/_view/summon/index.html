@@ -4,4 +4,37 @@
 
 #define content()
 	#@navbar("summon")
+	<div class="container">
+		<h1>AAA</h1>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a class="btn btn-default" href="#" id="drawOne">Draw One</a>
+			<a class="btn btn-default" href="#" id="drawTen">Draw Ten</a>
+		</div>
+		<div class="row" id="result">
+		</div>
+	</div>
+	<script type="text/javascript">
+		function generateCard(card) {
+			var html = '<div class="col-sm-2 col-md-2"><div class="thumbnail">'
+			html += '<p>'+card.type+'</p>';
+			html += '<p>'+card.id+'</p>';
+			html += '</div></div>';
+			return html;
+		}
+		$("#drawOne").click(function(e){
+			$.post("summon/drawOne",{"poolId":1},function(data){
+				var html = generateCard(data);
+				$("#result").html(html);
+			});
+		});
+		$("#drawTen").click(function(e){
+			$.post("summon/drawTen",{"poolId":1},function(data){
+				var html = "";
+				for(var i=0;i<data.length;i++){
+					html += generateCard(data[i]);
+				}
+				$("#result").html(html);
+			});
+		});
+	</script>
 #end
