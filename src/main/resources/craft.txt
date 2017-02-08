@@ -1,7 +1,57 @@
 [
 	{
 		"id":1,
-		"name":"黑键",
+		"name":"S1",
 		"rare":3
-	}
+	},
+	{
+		"id":2,
+		"name":"S2",
+		"rare":3
+	},
+	{
+		"id":3,
+		"name":"S3",
+		"rare":3
+	},
+	{
+		"id":4,
+		"name":"S4",
+		"rare":3
+	},
+	{
+		"id":5,
+		"name":"S5",
+		"rare":3
+	},
+	{
+		"id":6,
+		"name":"SR1",
+		"rare":4
+	},
+	{
+		"id":7,
+		"name":"SR2",
+		"rare":4
+	},
+	{
+		"id":8,
+		"name":"SR3",
+		"rare":4
+	},
+	{
+		"id":9,
+		"name":"SSR1",
+		"rare":5
+	},
+	{
+		"id":10,
+		"name":"SSR2",
+		"rare":5
+	},
+	{
+		"id":11,
+		"name":"SSR3",
+		"rare":5
+	},
 ]

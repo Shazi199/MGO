@@ -6,32 +6,32 @@
 			{
 				"weight":1,
 				"type":"servent",
-				"group":[51,52,53,54,55]
+				"group":[9,10,11]
 			},
 			{
 				"weight":3,
 				"type":"servent",
-				"group":[41,42,43,44,45]
+				"group":[6,7,8]
 			},
 			{
 				"weight":40,
 				"type":"servent",
-				"group":[31,32,33,34,35]
+				"group":[1,2,3,4,5]
 			},
 			{
 				"weight":4,
 				"type":"craft",
-				"group":[51,52,53,54,55]
+				"group":[9,10,11]
 			},
 			{
 				"weight":12,
 				"type":"craft",
-				"group":[41,42,43,44,45]
+				"group":[6,7,8]
 			},
 			{
 				"weight":40,
 				"type":"craft",
-				"group":[31,32,33,34,35]
+				"group":[1,2,3,4,5]
 			}
 		]
 	}
