@@ -2,6 +2,7 @@ package mgo.account;
 
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.JMap;
 
 import mgo.model.User;
 
@@ -25,5 +26,11 @@ public class AccountController extends Controller {
 	public void logout() {
 		removeSessionAttr("currentUser");
 		renderJson("result", "ok");
+	}
+	
+	public void getStone() {
+		User u = getSessionAttr("currentUser");
+		
+		renderJson(JMap.ok("stone", u.getStone()));
 	}
 }

@@ -1,0 +1,48 @@
+#include("../common/_layout.html")
+#include("../common/_navbar.html")
+#@layout()
+
+#define content()
+	#@navbar("shop")
+	<div class="container">
+		<h1>Buy Stone</h1>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a class="btn btn-default" href="#" id="buy140">140 Stone - $ 518</a>
+		</div>
+		<div class="row" id="result">
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("#buy140").click(function(){
+			$.post("shop/buy140",function(data){
+				if(data.isOk){
+					updateUserStone();
+					alert(data.msg)
+				}
+			});
+		});
+	</script>
+#end
+
+#define css()
+<style type="text/css">
+.starColor {
+	color: #FFFF00;
+}
+.rareColor1 {
+	background-color: #663300;
+}
+.rareColor2 {
+	background-color: #663300;
+}
+.rareColor3 {
+	background-color: #999999;
+}
+.rareColor4 {
+	background-color: #FF9900;
+}
+.rareColor5 {
+	background-color: #FF9900;
+}
+</style>
+#end

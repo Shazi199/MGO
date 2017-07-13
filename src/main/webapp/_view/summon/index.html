@@ -29,12 +29,22 @@
 		var rareSHOW={"1":"★","2":"★★","3":"★★★","4":"★★★★","5":"★★★★★"};
 		$("#drawOne").click(function(e){
 			$.post("summon/drawOne",{"poolId":1},function(data){
+				if(data.isFail){
+					alert(data.msg);
+					return;
+				}
+				updateUserStone();
 				var html = generateCard(data);
 				$("#result").html(html);
 			});
 		});
 		$("#drawTen").click(function(e){
 			$.post("summon/drawTen",{"poolId":1},function(data){
+				if(data.isFail){
+					alert(data.msg);
+					return;
+				}
+				updateUserStone();
 				var html = "";
 				for(var i=0;i<data.length;i++){
 					html += generateCard(data[i]);

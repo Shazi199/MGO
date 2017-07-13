@@ -57,4 +57,12 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return get("stone");
 	}
 
+	public void setCost(java.lang.Integer cost) {
+		set("cost", cost);
+	}
+
+	public java.lang.Integer getCost() {
+		return get("cost");
+	}
+
 }

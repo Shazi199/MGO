@@ -8,10 +8,11 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="#(activePage=='summon'?'active':'')"><a href="summon">召唤</a></li>
-				<li><a href="shop">商店</a></li>
+				<li class="#(activePage=='shop'?'active':'')"><a href="shop">商店</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><p class="navbar-text">#(currentUser.nickname ??)</p></li>
+				<li><p class="navbar-text" id="userStone">#(currentUser.stone ??)</p></li>
 				<li><button id="logout" type="button" class="btn btn-info navbar-btn">退出</button></li>
 			</ul>
 		</div>
@@ -24,5 +25,13 @@
 			location.reload();
 		});
 	});
+	
+	function updateUserStone(){
+		$.post("account/getStone",function(data){
+			if(data.isOk){
+				$("#userStone").text(data.stone);
+			}
+		})
+	}
 </script>
 #end

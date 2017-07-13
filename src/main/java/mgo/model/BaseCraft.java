@@ -49,4 +49,12 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 		return get("phase");
 	}
 
+	public void setExp(java.lang.Integer exp) {
+		set("exp", exp);
+	}
+
+	public java.lang.Integer getExp() {
+		return get("exp");
+	}
+
 }

@@ -6,6 +6,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 public class Pool {
+	public static final String CRAFT = "craft";
+	public static final String SERVENT = "servent";
+	
 	private Random rnd = new Random();
 
 	public int id;
