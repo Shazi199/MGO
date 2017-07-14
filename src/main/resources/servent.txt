@@ -2,56 +2,111 @@
 	{
 		"id":1,
 		"name":"S1",
-		"rare":3
+		"rare":3,
+		"type":1,
+		"atk":1111,
+		"atkRate":50,
+		"health":2110,
+		"healthRate":50
 	},
 	{
 		"id":2,
 		"name":"S2",
-		"rare":3
+		"rare":3,
+		"type":2,
+		"atk":1211,
+		"atkRate":45,
+		"health":2010,
+		"healthRate":55
 	},
 	{
 		"id":3,
 		"name":"S3",
-		"rare":3
+		"rare":3,
+		"type":3,
+		"atk":1311,
+		"atkRate":55,
+		"health":1910,
+		"healthRate":45
 	},
 	{
 		"id":4,
 		"name":"S4",
-		"rare":3
+		"rare":3,
+		"type":4,
+		"atk":1011,
+		"atkRate":60,
+		"health":2210,
+		"healthRate":40
 	},
 	{
 		"id":5,
 		"name":"S5",
-		"rare":3
+		"rare":3,
+		"type":5,
+		"atk":911,
+		"atkRate":40,
+		"health":2310,
+		"healthRate":60
 	},
 	{
 		"id":6,
 		"name":"SR1",
-		"rare":4
+		"rare":4,
+		"type":6,
+		"atk":1611,
+		"atkRate":55,
+		"health":2610,
+		"healthRate":60
 	},
 	{
 		"id":7,
 		"name":"SR2",
-		"rare":4
+		"rare":4,
+		"type":7,
+		"atk":1811,
+		"atkRate":60,
+		"health":2410,
+		"healthRate":55
 	},
 	{
 		"id":8,
 		"name":"SR3",
-		"rare":4
+		"rare":4,
+		"type":1,
+		"atk":1411,
+		"atkRate":50,
+		"health":2810,
+		"healthRate":65
 	},
 	{
 		"id":9,
 		"name":"SSR1",
-		"rare":5
+		"rare":5,
+		"type":2,
+		"atk":2311,
+		"atkRate":70,
+		"health":3110,
+		"healthRate":60
 	},
 	{
 		"id":10,
 		"name":"SSR2",
-		"rare":5
+		"rare":5,
+		"type":3,
+		"atk":2111,
+		"atkRate":80,
+		"health":3410,
+		"healthRate":50
 	},
 	{
 		"id":11,
 		"name":"SSR3",
-		"rare":5
+		"rare":5,
+		"type":4,
+		"atk":2511,
+		"atkRate":80,
+		"health":3110,
+		"healthRate":45
 	},
 ]
