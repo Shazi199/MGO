@@ -7,7 +7,8 @@
 		"atk":1111,
 		"atkRate":50,
 		"health":2110,
-		"healthRate":50
+		"healthRate":50,
+		"card":[1,1,2,2,3]
 	},
 	{
 		"id":2,
@@ -17,7 +18,8 @@
 		"atk":1211,
 		"atkRate":45,
 		"health":2010,
-		"healthRate":55
+		"healthRate":55,
+		"card":[1,1,2,3,3]
 	},
 	{
 		"id":3,
@@ -27,7 +29,8 @@
 		"atk":1311,
 		"atkRate":55,
 		"health":1910,
-		"healthRate":45
+		"healthRate":45,
+		"card":[1,2,2,2,3]
 	},
 	{
 		"id":4,
@@ -37,7 +40,8 @@
 		"atk":1011,
 		"atkRate":60,
 		"health":2210,
-		"healthRate":40
+		"healthRate":40,
+		"card":[1,1,1,2,3]
 	},
 	{
 		"id":5,
@@ -47,7 +51,8 @@
 		"atk":911,
 		"atkRate":40,
 		"health":2310,
-		"healthRate":60
+		"healthRate":60,
+		"card":[1,2,2,2,3]
 	},
 	{
 		"id":6,
@@ -57,7 +62,8 @@
 		"atk":1611,
 		"atkRate":55,
 		"health":2610,
-		"healthRate":60
+		"healthRate":60,
+		"card":[1,1,2,3,3]
 	},
 	{
 		"id":7,
@@ -67,7 +73,8 @@
 		"atk":1811,
 		"atkRate":60,
 		"health":2410,
-		"healthRate":55
+		"healthRate":55,
+		"card":[1,1,2,2,3]
 	},
 	{
 		"id":8,
@@ -77,7 +84,8 @@
 		"atk":1411,
 		"atkRate":50,
 		"health":2810,
-		"healthRate":65
+		"healthRate":65,
+		"card":[1,1,2,2,3]
 	},
 	{
 		"id":9,
@@ -87,7 +95,8 @@
 		"atk":2311,
 		"atkRate":70,
 		"health":3110,
-		"healthRate":60
+		"healthRate":60,
+		"card":[1,1,1,2,3]
 	},
 	{
 		"id":10,
@@ -97,7 +106,8 @@
 		"atk":2111,
 		"atkRate":80,
 		"health":3410,
-		"healthRate":50
+		"healthRate":50,
+		"card":[1,2,2,2,3]
 	},
 	{
 		"id":11,
@@ -107,6 +117,7 @@
 		"atk":2511,
 		"atkRate":80,
 		"health":3110,
-		"healthRate":45
+		"healthRate":45,
+		"card":[1,1,2,2,3]
 	},
 ]
