@@ -1,57 +1,57 @@
 [
 	{
 		"id":1,
-		"name":"S1",
+		"name":"水符「Princess Undine」",
 		"rare":3
 	},
 	{
 		"id":2,
-		"name":"S2",
+		"name":"火符「Agni Shine」",
 		"rare":3
 	},
 	{
 		"id":3,
-		"name":"S3",
+		"name":"木符「Green Storm」",
 		"rare":3
 	},
 	{
 		"id":4,
-		"name":"S4",
+		"name":"金符「Metal Fatigue」",
 		"rare":3
 	},
 	{
 		"id":5,
-		"name":"S5",
+		"name":"土符「Trilithon Shake」",
 		"rare":3
 	},
 	{
 		"id":6,
-		"name":"SR1",
+		"name":"幻世「The World」",
 		"rare":4
 	},
 	{
 		"id":7,
-		"name":"SR2",
+		"name":"日符「Royal Flare」",
 		"rare":4
 	},
 	{
 		"id":8,
-		"name":"SR3",
+		"name":"月符「Silent Selene」",
 		"rare":4
 	},
 	{
 		"id":9,
-		"name":"SSR1",
+		"name":"天罚「Star Of David」",
 		"rare":5
 	},
 	{
 		"id":10,
-		"name":"SSR2",
+		"name":"禁弹「Starbow Break」",
 		"rare":5
 	},
 	{
 		"id":11,
-		"name":"SSR3",
+		"name":"禁弹「刻着过去的钟表」",
 		"rare":5
 	},
 ]

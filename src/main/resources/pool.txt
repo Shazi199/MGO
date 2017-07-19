@@ -1,7 +1,7 @@
 [
 	{
 		"id":1,
-		"name":"普通",
+		"name":"红魔乡",
 		"groups":[
 			{
 				"weight":1,
