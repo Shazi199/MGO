@@ -14,7 +14,8 @@ import mgo.pool.Pool.Card;
 
 public class SummonController extends Controller {
 	public void index() {
-		setAttr("pools", Data.instance.poolData);
+		int poolId = getParaToInt("poolId", 1);
+		setAttr("pool", Data.instance.poolData.get(poolId));
 		renderTemplate("index.html");
 	}
 
@@ -22,7 +23,7 @@ public class SummonController extends Controller {
 	public void drawOne() {
 		User u = getSessionAttr("currentUser");
 		if (u.getStone() < 3) {
-			renderJson(JMap.fail("msg", "不足3个！"));
+			renderJson(JMap.fail("msg", "☯不足3个！"));
 			return;
 		}
 		
@@ -43,7 +44,7 @@ public class SummonController extends Controller {
 	public void drawTen() {
 		User u = getSessionAttr("currentUser");
 		if (u.getStone() < 30) {
-			renderJson(JMap.fail("msg", "不足30个！"));
+			renderJson(JMap.fail("msg", "☯不足30个！"));
 			return;
 		}
 		int poolId = getParaToInt("poolId");

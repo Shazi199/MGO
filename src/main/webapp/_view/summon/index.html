@@ -5,20 +5,21 @@
 #define content()
 	#@navbar("summon")
 	<div class="container">
-		<h1>AAA</h1>
+		<h1>#(pool.name ??)</h1>
 		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
-			<a class="btn btn-default" href="#" id="drawOne">Draw One</a>
-			<a class="btn btn-default" href="#" id="drawTen">Draw Ten</a>
+			<a class="btn btn-default" href="#" id="drawOne">召唤　1　次</a>
+			<a class="btn btn-default" href="#" id="drawTen">召唤　10　次</a>
 		</div>
 		<div class="row" id="result">
 		</div>
 	</div>
 	<script type="text/javascript">
+		var poolId = #(pool.id ??);
 		function generateCard(card) {
 			var cardInfo = getCardInfo(card.type, card.id);
 			var html = '<div class="col-sm-2 col-md-2"><div class="thumbnail rareColor'+cardInfo.rare+'">'
-			html += '<p>'+card.type+'</p>';
 			html += '<p>'+cardInfo.name+'</p>';
+			html += '<p></p>';
 			html += '<p class="starColor">'+rareSHOW[cardInfo.rare]+'</p>';
 			html += '</div></div>';
 			return html;
@@ -28,7 +29,7 @@
 		}
 		var rareSHOW={"1":"★","2":"★★","3":"★★★","4":"★★★★","5":"★★★★★"};
 		$("#drawOne").click(function(e){
-			$.post("summon/drawOne",{"poolId":1},function(data){
+			$.post("summon/drawOne",{"poolId":poolId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 					return;
@@ -39,7 +40,7 @@
 			});
 		});
 		$("#drawTen").click(function(e){
-			$.post("summon/drawTen",{"poolId":1},function(data){
+			$.post("summon/drawTen",{"poolId":poolId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 					return;
