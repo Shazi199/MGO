@@ -1,0 +1,57 @@
+#include("../common/_layout.html")
+#include("../common/_navbar.html")
+#@layout()
+
+#define content()
+	#@navbar("detail")
+	<div class="container">
+		<h1>一览</h1>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a class="btn btn-default" href="#" id="servent">角色</a>
+			<a class="btn btn-default" href="#" id="craft">符卡</a>
+		</div>
+		<div class="table-responsive">
+			<table class="table" id="resultTable">
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("#servent").click(function(){
+			$.post("detail/loadServent",function(data){
+				$("#resultTable").html(data);
+			});
+			
+			return false;
+		});
+		$("#craft").click(function(){
+			$.post("detail/loadCraft",function(data){
+				$("#resultTable").html(data);
+			});
+			
+			return false;
+		});
+	</script>
+#end
+
+#define css()
+<style type="text/css">
+.starColor {
+	color: #FFFF00;
+}
+.rareColor1 {
+	background-color: #663300;
+}
+.rareColor2 {
+	background-color: #663300;
+}
+.rareColor3 {
+	background-color: #999999;
+}
+.rareColor4 {
+	background-color: #FF9900;
+}
+.rareColor5 {
+	background-color: #FF9900;
+}
+</style>
+#end

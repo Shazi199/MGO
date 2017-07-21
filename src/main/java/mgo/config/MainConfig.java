@@ -15,6 +15,7 @@ import com.jfinal.template.Engine;
 import mgo.account.AccountRoutes;
 import mgo.account.CheckLoginInterceptor;
 import mgo.common.GlobalAttributeInterceptor;
+import mgo.detail.DetailRoutes;
 import mgo.index.IndexRoutes;
 import mgo.model._MappingKit;
 import mgo.shop.ShopRoutes;
@@ -35,6 +36,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(new AccountRoutes());
 		me.add(new SummonRoutes());
 		me.add(new ShopRoutes());
+		me.add(new DetailRoutes());
 	}
 
 	@Override
