@@ -129,4 +129,12 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 		return get("skill3level");
 	}
 
+	public void setCreated(java.util.Date created) {
+		set("created", created);
+	}
+
+	public java.util.Date getCreated() {
+		return get("created");
+	}
+
 }

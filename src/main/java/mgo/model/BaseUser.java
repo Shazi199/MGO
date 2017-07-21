@@ -65,4 +65,20 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return get("cost");
 	}
 
+	public void setCreated(java.util.Date created) {
+		set("created", created);
+	}
+
+	public java.util.Date getCreated() {
+		return get("created");
+	}
+
+	public void setLastlogin(java.util.Date lastlogin) {
+		set("lastlogin", lastlogin);
+	}
+
+	public java.util.Date getLastlogin() {
+		return get("lastlogin");
+	}
+
 }

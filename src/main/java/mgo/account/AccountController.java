@@ -1,5 +1,7 @@
 package mgo.account;
 
+import java.util.Date;
+
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JMap;
@@ -14,6 +16,8 @@ public class AccountController extends Controller {
 		String userpass = getPara("userpass");
 
 		User u = new User().findByUsername(username);
+		u.setLastlogin(new Date());
+		u.update();
 		if (u != null && u.getUserpass().equals(userpass)) {
 			setSessionAttr("currentUser", u);
 			renderJson("result", "ok");

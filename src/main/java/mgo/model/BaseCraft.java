@@ -57,4 +57,12 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 		return get("exp");
 	}
 
+	public void setCreated(java.util.Date created) {
+		set("created", created);
+	}
+
+	public java.util.Date getCreated() {
+		return get("created");
+	}
+
 }
