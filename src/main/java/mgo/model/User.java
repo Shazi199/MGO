@@ -13,4 +13,11 @@ public class User extends BaseUser<User> {
 		}
 		return findFirst(getSql("findUserByUsername"), username);
 	}
+
+	public User findByOauth(String authid, String type) {
+		if (authid == null || type == null) {
+			return null;
+		}
+		return findFirst(getSql("findUserByOauth"), authid, type);
+	}
 }
