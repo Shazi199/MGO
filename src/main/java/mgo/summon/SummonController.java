@@ -1,5 +1,7 @@
 package mgo.summon;
 
+import java.util.Date;
+
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JMap;
@@ -71,6 +73,7 @@ public class SummonController extends Controller {
 			c.setLevel(1);
 			c.setPhase(0);
 			c.setExp(0);
+			c.setCreated(new Date());
 			c.save();
 			break;
 		case Pool.SERVENT:
@@ -89,6 +92,7 @@ public class SummonController extends Controller {
 			s.setSkill1level(-1);
 			s.setSkill2level(-1);
 			s.setSkill3level(-1);
+			s.setCreated(new Date());
 			s.save();
 			break;
 		}
