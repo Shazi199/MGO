@@ -16,12 +16,7 @@
   		<groupId>com.jfinal</groupId>
   		<artifactId>jetty-server</artifactId>
   		<version>8.1.8</version>
-  		<exclusions>
-  		    <exclusion>
-  		        <groupId>com.jfinal</groupId>
-  		        <artifactId>jetty-server</artifactId>
-  		    </exclusion>
-  		</exclusions>
+  		<scope>provided</scope>
   	</dependency>
   	<dependency>
 	    <groupId>com.alibaba</groupId>
