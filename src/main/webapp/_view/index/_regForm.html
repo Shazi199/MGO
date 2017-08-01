@@ -1,33 +1,38 @@
-#define loginForm()
+#define regForm()
 <div class="container">
 	<form id="loginForm" class="form-signin">
 		<h2 class="form-signin-heading">MGO</h2>
 		<label for="inputUsername" class="sr-only">用户名</label>
 		<input type="text" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
+		<label for="inputNickname" class="sr-only">昵称</label>
+		<input type="text" id="inputNickname" class="form-control" placeholder="昵称" required autofocus>
+		<label for="inputEmail" class="sr-only">邮件</label>
+		<input type="email" id="inputEmail" class="form-control" placeholder="邮件" required autofocus>
 		<label for="inputPassword" class="sr-only">密码</label>
 		<input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
 		<label for="randomCode" class="sr-only">验证码</label>
 		<input type="text" id="randomCode" class="form-control" placeholder="验证码" required>
-		<img id="captchaImage" src="captcha" onclick="refreshCode()"/>
+		<img id="captchaImage" src="/captcha" onclick="refreshCode()"/>
 		<div id="loginInfo" class="alert alert-danger" role="alert" style="display:none"></div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
-		<button class="btn btn-lg btn-primary btn-block" type="button" onclick="toReg()">注册</button>
-		<a href="https://api.weibo.com/oauth2/authorize?client_id=#(weibo_appid ??)&response_type=code&redirect_uri=http://#(weibo_url ??)/account/weiboLogin" class="btn btn-default btn-danger" type="button" id="weiboLogin">微博登录</a>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+		<button class="btn btn-lg btn-primary btn-block" type="button" onclick="toBack()">返回</button>
 	</form>
 </div>
 <script type="text/javascript">
 	$("#loginForm").submit(function(e){
 		var username = $("#inputUsername").val();
+		var nickname = $("#inputNickname").val();
+		var email = $("#inputEmail").val();
 		var userpass = $("#inputPassword").val();
 		var randomCode = $("#randomCode").val();
 		$("#loginInfo").hide();
-		$.post("account/login",{username:username,userpass:userpass,randomCode:randomCode},function(data){
+		$.post("account/reg",{username:username,userpass:userpass,email:email,nickname:nickname,randomCode:randomCode},function(data){
 			if(data.isFail){
 				$("#loginInfo").html(data.msg);
 				$("#loginInfo").slideDown();
 				refreshCode();
 			}else{
-				location.reload();
+				location="/";
 			}
 		});
 		return false;
@@ -37,13 +42,13 @@
 		$("#captchaImage")[0].src = "captcha?rnd="+new Date().getTime();
 	}
 	
-	function toReg(){
-		location="/reg";
+	function toBack() {
+		location="/";
 	}
 </script>
 #end
 
-#define loginFormCSS()
+#define regFormCSS()
 <style type="text/css">
 .form-signin {
   max-width: 330px;

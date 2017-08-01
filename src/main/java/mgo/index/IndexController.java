@@ -19,4 +19,9 @@ public class IndexController extends Controller {
 	public void captcha() {
 		renderCaptcha();
 	}
+
+	@Clear(CheckLoginInterceptor.class)
+	public void reg() {
+		renderTemplate("reg.html");
+	}
 }

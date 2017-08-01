@@ -30,9 +30,9 @@ public class AccountController extends Controller {
 		String userpass = getPara("userpass");
 
 		User u = new User().findByUsername(username);
-		u.setLastlogin(new Date());
-		u.update();
 		if (u != null && u.getUserpass().equals(userpass)) {
+			u.setLastlogin(new Date());
+			u.update();
 			setSessionAttr("currentUser", u);
 			renderJson(JMap.ok());
 		} else {
@@ -44,6 +44,37 @@ public class AccountController extends Controller {
 	public void logout() {
 		removeSessionAttr("currentUser");
 		getSession().invalidate();
+		renderJson("result", "ok");
+	}
+
+	@Clear(CheckLoginInterceptor.class)
+	public void reg() {
+		if (!validateCaptcha("randomCode")) {
+			renderJson(JMap.fail("msg", "验证码错误"));
+			return;
+		}
+		String username = getPara("username");
+		String userpass = getPara("userpass");
+		String email = getPara("email");
+		String nickname = getPara("nickname");
+
+		User u = new User().findByUsername(username);
+		if (u != null) {
+			renderJson(JMap.fail("msg", "用户名已存在"));
+			return;
+		}
+		
+		u = new User();
+		u.setUsername(username);
+		u.setUserpass(userpass);
+		u.setEmail(email);
+		u.setNickname(nickname);
+		u.setStone(0);
+		u.setCost(0);
+		u.setCreated(new Date());
+		u.setLastlogin(new Date());
+		u.save();
+		
 		renderJson("result", "ok");
 	}
 
