@@ -6,6 +6,9 @@
 		<input type="text" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
 		<label for="inputPassword" class="sr-only">密码</label>
 		<input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+		<label for="randomCode" class="sr-only">验证码</label>
+		<input type="text" id="randomCode" class="form-control" placeholder="验证码" required>
+		<img id="captchaImage" src="captcha" onclick="refreshCode(this)"/>
 		<div id="loginInfo" class="alert alert-danger" role="alert" style="display:none"></div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
 		<a href="https://api.weibo.com/oauth2/authorize?client_id=#(weibo_appid ??)&response_type=code&redirect_uri=http://#(weibo_url ??)/account/weiboLogin" class="btn btn-default btn-danger" type="button" id="weiboLogin">微博登录</a>
@@ -15,17 +18,22 @@
 	$("#loginForm").submit(function(e){
 		var username = $("#inputUsername").val();
 		var userpass = $("#inputPassword").val();
+		var randomCode = $("#randomCode").val();
 		$("#loginInfo").hide();
-		$.post("account/login",{username:username,userpass:userpass},function(data){
-			if(data.result=="ok"){
-				location.reload();
-			}else{
-				$("#loginInfo").html("用户名或密码错误！");
+		$.post("account/login",{username:username,userpass:userpass,randomCode:randomCode},function(data){
+			if(data.isFail){
+				$("#loginInfo").html(data.msg);
 				$("#loginInfo").slideDown();
+			}else{
+				location.reload();
 			}
 		});
 		return false;
 	});
+	
+	function refreshCode(img) {
+		img.src = "captcha?rnd="+new Date().getTime();
+	}
 </script>
 #end
 

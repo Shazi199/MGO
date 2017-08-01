@@ -22,6 +22,10 @@ public class AccountController extends Controller {
 
 	@Clear(CheckLoginInterceptor.class)
 	public void login() {
+		if (!validateCaptcha("randomCode")) {
+			renderJson(JMap.fail("msg", "验证码错误"));
+			return;
+		}
 		String username = getPara("username");
 		String userpass = getPara("userpass");
 
@@ -30,9 +34,9 @@ public class AccountController extends Controller {
 		u.update();
 		if (u != null && u.getUserpass().equals(userpass)) {
 			setSessionAttr("currentUser", u);
-			renderJson("result", "ok");
+			renderJson(JMap.ok());
 		} else {
-			renderJson("result", "fail");
+			renderJson(JMap.fail("msg", "登陆失败请重试"));
 		}
 	}
 

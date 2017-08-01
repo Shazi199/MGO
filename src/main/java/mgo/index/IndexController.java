@@ -14,4 +14,9 @@ public class IndexController extends Controller {
 		setAttr("weibo_url", PropKit.get("weibo_url"));
 		renderTemplate("index.html");
 	}
+
+	@Clear(CheckLoginInterceptor.class)
+	public void captcha() {
+		renderCaptcha();
+	}
 }
