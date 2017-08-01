@@ -39,6 +39,7 @@ public class AccountController extends Controller {
 	@Clear(CheckLoginInterceptor.class)
 	public void logout() {
 		removeSessionAttr("currentUser");
+		getSession().invalidate();
 		renderJson("result", "ok");
 	}
 
