@@ -7,7 +7,7 @@
 		<label for="inputPassword" class="sr-only">密码</label>
 		<input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
 		<label for="randomCode" class="sr-only">验证码</label>
-		<input type="text" id="randomCode" class="form-control" placeholder="验证码" required>
+		<input type="text" id="randomCode" class="form-control" placeholder="验证码" required autocomplete="off">
 		<img id="captchaImage" src="captcha" onclick="refreshCode()"/>
 		<div id="loginInfo" class="alert alert-danger" role="alert" style="display:none"></div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
