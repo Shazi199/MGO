@@ -19,6 +19,9 @@
 			var cardInfo = getCardInfo(card.type, card.id);
 			var html = '<div class="col-sm-2 col-md-2"><div class="thumbnail rareColor'+cardInfo.rare+'">'
 			html += '<p>'+cardInfo.name+'</p>';
+			if("servent"==card.type){
+				html += '<p>'+DATA_DB["class"][cardInfo.type]+'</p>';
+			}
 			html += '<p></p>';
 			html += '<p class="starColor">'+rareSHOW[cardInfo.rare]+'</p>';
 			html += '</div></div>';
