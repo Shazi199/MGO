@@ -1,0 +1,9 @@
+{
+	"1":"Saber",
+	"2":"Lancer",
+	"3":"Archer",
+	"4":"Rider",
+	"5":"Caster",
+	"6":"Assassin",
+	"7":"Berserker"
+}

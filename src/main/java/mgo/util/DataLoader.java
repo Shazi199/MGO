@@ -7,12 +7,19 @@ import org.apache.commons.io.IOUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Const;
 
 public class DataLoader {
 	public static JSONArray loadArrayData(String fileName) {
 		String content = loadFile(fileName);
 		JSONArray data = JSON.parseArray(content);
+		return data;
+	}
+	
+	public static JSONObject loadObjectData(String fileName) {
+		String content = loadFile(fileName);
+		JSONObject data = JSON.parseObject(content);
 		return data;
 	}
 

@@ -1,5 +1,7 @@
 package mgo.model;
 
+import java.util.List;
+
 import mgo.model.BaseServent;
 
 /**
@@ -7,5 +9,7 @@ import mgo.model.BaseServent;
  */
 @SuppressWarnings("serial")
 public class Servent extends BaseServent<Servent> {
-	
+	public List<Servent> findServentsByUserid(long userId) {
+		return find(getSql("findServentsByUserid"), userId);
+	}
 }

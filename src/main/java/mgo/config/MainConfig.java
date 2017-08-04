@@ -53,6 +53,8 @@ public class MainConfig extends JFinalConfig {
 		_MappingKit.mapping(activeRecordPlugin);
 		activeRecordPlugin.setBaseSqlTemplatePath(PathKit.getRootClassPath());
 		activeRecordPlugin.addSqlTemplate("user.sql");
+		activeRecordPlugin.addSqlTemplate("servent.sql");
+		activeRecordPlugin.addSqlTemplate("craft.sql");
 		me.add(activeRecordPlugin);
 	}
 

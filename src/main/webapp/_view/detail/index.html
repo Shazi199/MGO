@@ -12,25 +12,63 @@
 		</div>
 		<div class="table-responsive">
 			<table class="table" id="resultTable">
+				<caption id="tableName"></caption>
+				<thead id="tableHead"></thead>
+				<tbody id="tableBody"></tbody>
 			</table>
 		</div>
 	</div>
 	<script type="text/javascript">
 		$("#servent").click(function(){
+			$("#resultTable").hide();
 			$.post("detail/loadServent",function(data){
-				$("#resultTable").html(data);
+				$("#tableName").text("角色");
+				$("#tableHead").html("<tr><td>名称</td><td>稀有度</td><td>等级</td><td>职阶</td><td>ATK</td><td>HP</td></tr>");
+				var body = "";
+				for(var i=0;i<data.length;i++){
+					var row = data[i];
+					var info = DATA_DB["servent"][row.sid];
+					var gen = "<tr class='rareColor"+info.rare+"'>";
+					gen += "<td>"+info.name+"</td>"
+					gen += "<td class='starColor'>"+rareSHOW[info.rare]+"</td>"
+					gen += "<td>"+row.level+"</td>"
+					gen += "<td>"+DATA_DB["class"][info.type]+"</td>"
+					gen += "<td>"+(info.atk+row.level*info.atkRate)+"</td>"
+					gen += "<td>"+(info.health+row.level*info.healthRate)+"</td>"
+					gen += "</tr>"
+					body += gen;
+				}
+				$("#tableBody").html(body);
+				$("#resultTable").show();
 			});
 			
 			return false;
 		});
 		$("#craft").click(function(){
+			$("#resultTable").hide();
 			$.post("detail/loadCraft",function(data){
-				$("#resultTable").html(data);
+				$("#tableName").text("符卡");
+				$("#tableHead").html("<tr><td>名称</td><td>稀有度</td><td>等级</td></tr>");
+				var body = "";
+				for(var i=0;i<data.length;i++){
+					var row = data[i];
+					var info = DATA_DB["craft"][row.sid];
+					var gen = "<tr class='rareColor"+info.rare+"'>";
+					gen += "<td>"+info.name+"</td>"
+					gen += "<td class='starColor'>"+rareSHOW[info.rare]+"</td>"
+					gen += "<td>"+row.level+"</td>"
+					gen += "</tr>"
+					body += gen;
+				}
+				$("#tableBody").html(body);
+				$("#resultTable").show();
 			});
 			
 			return false;
 		});
+		var rareSHOW={"1":"★","2":"★★","3":"★★★","4":"★★★★","5":"★★★★★"};
 	</script>
+	<script src="js/db.js"></script>
 #end
 
 #define css()

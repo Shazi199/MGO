@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Const;
 
 import mgo.config.Data;
+import mgo.util.DataLoader;
 
 public class ClientDataGenerator {
 	public static void main(String[] args) {
@@ -25,7 +26,11 @@ public class ClientDataGenerator {
 		db.append("var CRAFT_DB=");
 		db.append(JSON.toJSONString(craftData));
 		db.append(";\r\n");
-		db.append("var DATA_DB={\"servent\":SERVENT_DB,\"craft\":CRAFT_DB};");
+		JSONObject classData = DataLoader.loadObjectData("class.txt");
+		db.append("var CLASS_DB=");
+		db.append(JSON.toJSONString(classData));
+		db.append(";\r\n");
+		db.append("var DATA_DB={\"servent\":SERVENT_DB,\"craft\":CRAFT_DB,\"class\":CLASS_DB};");
 		File dbJS = new File("src/main/webapp/js/db.js");
 		if (dbJS.exists()) {
 			dbJS.delete();
