@@ -1,0 +1,186 @@
+#include("../common/_layout.html")
+#include("../common/_navbar.html")
+#@layout()
+
+#define content()
+	#@navbar("team")
+	<div class="container">
+		<h1>队伍编成</h1>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a class="btn btn-default" href="#" id="createTeam">创建队伍</a>
+		</div>
+		<div class="table-responsive">
+			<table class="table" id="resultTable">
+				<thead id="tableHead">
+					<tr>
+						<td>队伍名</td>
+						<td>①</td>
+						<td>②</td>
+						<td>③</td>
+						<td>④</td>
+						<td>⑤</td>
+						<td>⑥</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody id="tableBody"></tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal fade" id="TeamEditor" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+            	<div class="modal-header">
+            		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="modalTitle">编辑队伍</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<table>
+	            		<tr>
+	            			<td>队伍名</td>
+	            			<td><input type="text" id="teamName" /><input type="hidden" id="teamId" /></td>
+	            		</tr>
+	            		<tr>
+	            			<td>①</td>
+	            			<td><select id="teamServent1"></select></td>
+	            		</tr>
+	            		<tr>
+	            			<td>②</td>
+	            			<td><select id="teamServent2"></select></td>
+	            		</tr>
+	            		<tr>
+	            			<td>③</td>
+	            			<td><select id="teamServent3"></select></td>
+	            		</tr>
+	            		<tr>
+	            			<td>④</td>
+	            			<td><select id="teamServent4"></select></td>
+	            		</tr>
+	            		<tr>
+	            			<td>⑤</td>
+	            			<td><select id="teamServent5"></select></td>
+	            		</tr>
+	            		<tr>
+	            			<td>⑥</td>
+	            			<td><select id="teamServent6"></select></td>
+	            		</tr>
+	            	</table>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" id="saveTeam">保存</button>
+	                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+		    var serventOptionsHTML = "<option value=''></option>";
+		    var myServents = [];
+		    var myTeams = [];
+		    $.post("detail/loadServent",function(data){
+		    	myServents = data;
+		    	for (var i = 0; i < data.length; i++) {
+					var row = data[i];
+					var info = DATA_DB["servent"][row.sid];
+					var gen = "<option value='"+row.id+"'>Lv." + row.level + " "
+							+ info.name + " " + rareSHOW[info.rare]
+							+ "</option>";
+					serventOptionsHTML += gen;
+				}
+		    	for (var i = 1; i <= 6; i++) {
+					$("#teamServent"+i).html(serventOptionsHTML);
+				}
+		    	$("#createTeam").click(function(){
+		    		resetEditor();
+		    		$('#TeamEditor').modal('show');
+		    	});
+		    	$("#saveTeam").click(function(){
+		    		saveOrUpdateTeam();
+		    	});
+			});
+		});
+		function saveOrUpdateTeam() {
+			var teamId = $("#teamId").val();
+			var teamName = $("#teamName").val();
+			var teamServent = [];
+	    	for (var i = 1; i <= 6; i++) {
+				var serventId = $("#teamServent"+i).val();
+				if(serventId){
+					teamServent.push(serventId);
+				}
+			}			
+			$.post("team/saveOrUpdateTeam",
+					{
+						teamId:teamId,
+						teamName:teamName,
+						teamServent:teamServent
+					},
+					function(data){
+						if(data.isFail){
+							alert(data.msg);
+						}else{
+			    			$('#TeamEditor').modal('hide');
+						}
+					}
+			);
+		}
+		function loadToEditor(name,servents) {
+			if(name){
+				$("#teamName").val(name);
+			}else{
+				$("#teamName").val("");
+			}
+			if(servents){
+		    	for (var i = 1; i <= 6; i++) {
+		    		if(servents[i-1]){
+						$("#teamServent"+i).val(servents[i-1]);
+		    		}else{
+						$("#teamServent"+i).val("");
+		    		}
+				}
+			}else{
+		    	for (var i = 1; i <= 6; i++) {
+					$("#teamServent"+i).val("");
+				}
+			}
+		}
+		function resetEditor() {
+			$("#teamName").val("");
+	    	for (var i = 1; i <= 6; i++) {
+				$("#teamServent"+i).val("");
+			}
+		}
+		var rareSHOW = {
+			"1" : "★",
+			"2" : "★★",
+			"3" : "★★★",
+			"4" : "★★★★",
+			"5" : "★★★★★"
+		};
+	</script>
+	<script src="js/db.js"></script>
+#end
+
+#define css()
+<style type="text/css">
+.starColor {
+	color: #FFFF00;
+}
+.rareColor1 {
+	background-color: #663300;
+}
+.rareColor2 {
+	background-color: #663300;
+}
+.rareColor3 {
+	background-color: #999999;
+}
+.rareColor4 {
+	background-color: #FF9900;
+}
+.rareColor5 {
+	background-color: #FF9900;
+}
+</style>
+#end

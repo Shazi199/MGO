@@ -20,6 +20,7 @@ import mgo.index.IndexRoutes;
 import mgo.model._MappingKit;
 import mgo.shop.ShopRoutes;
 import mgo.summon.SummonRoutes;
+import mgo.team.TeamRoutes;
 
 public class MainConfig extends JFinalConfig {
 
@@ -37,6 +38,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(new SummonRoutes());
 		me.add(new ShopRoutes());
 		me.add(new DetailRoutes());
+		me.add(new TeamRoutes());
 	}
 
 	@Override
@@ -55,6 +57,7 @@ public class MainConfig extends JFinalConfig {
 		activeRecordPlugin.addSqlTemplate("user.sql");
 		activeRecordPlugin.addSqlTemplate("servent.sql");
 		activeRecordPlugin.addSqlTemplate("craft.sql");
+		activeRecordPlugin.addSqlTemplate("teamMember.sql");
 		me.add(activeRecordPlugin);
 	}
 
