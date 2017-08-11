@@ -19,6 +19,31 @@ public class TeamController extends Controller {
 		renderTemplate("index.html");
 	}
 	
+	public void loadTeam() {
+		User u = getSessionAttr("currentUser");
+		
+		List<Team> datas = new Team().findTeamsByUserid(u.getId());
+		setAttr("datas", datas);
+		
+		renderJson(datas);
+	}
+
+	@Before(Tx.class)
+	public void deleteTeam() {
+		User u = getSessionAttr("currentUser");
+
+		long teamId = getParaToLong("teamId", -1l);
+		
+		Team team = new Team().findById(teamId);
+		if (team == null || !u.getId().equals(team.getUserid())) {
+			renderJson(JMap.fail("msg", "无效队伍"));
+			return;
+		}
+		
+		team.delete();
+		renderJson(JMap.ok());
+	}
+	
 	@Before(Tx.class)
 	public void saveOrUpdateTeam() {
 		User u = getSessionAttr("currentUser");

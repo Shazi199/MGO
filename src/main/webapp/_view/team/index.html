@@ -74,10 +74,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+    	var serventOptionsHTML = "<option value=''></option>";
+    	var myServents = [];
+    	var myTeams = {};
 		$(function() {
-		    var serventOptionsHTML = "<option value=''></option>";
-		    var myServents = [];
-		    var myTeams = [];
 		    $.post("detail/loadServent",function(data){
 		    	myServents = data;
 		    	for (var i = 0; i < data.length; i++) {
@@ -99,7 +99,52 @@
 		    		saveOrUpdateTeam();
 		    	});
 			});
+		    loadTeam();
 		});
+		function loadTeam() {
+			$("#tableBody").html("");
+		    $.post("team/loadTeam",function(data){
+		    	var result = "";
+		    	for (var i = 0; i < data.length; i++) {
+		    		var row = data[i];
+		    		myTeams[row.id] = row;
+		    		result += "<tr id='team_"+row.id+"'>"+generateRowData(row)+"</tr>";
+		    	}
+				$("#tableBody").html(result);
+		    });
+		}
+		function generateRowData(data) {
+			var result = "<td>"+data.teamname+"</td>";
+			for(var i=0;i<6;i++) {
+				if(i<data.members.length){
+					var row = data.members[i];
+					var info = DATA_DB["servent"][row.sid];
+					result += "<td class='rareColor"+info.rare+"'>Lv." + row.level + " "
+					+ info.name + " <span class='starColor'>" + rareSHOW[info.rare] +"</span></td>";
+				}else{
+					result += "<td></td>";
+				}
+			}
+			result += "<td>";
+			result += "<button type='button' class='btn btn-primary' onclick='showEditTeam("+data.id+")'>修改</button>";
+			result += "<button type='button' class='btn btn-danger' onclick='showDeleteTeam("+data.id+")'>删除</button>";
+			result += "</td>";
+			
+			return result;
+		}
+		function showEditTeam(teamId) {
+			loadToEditor(teamId)
+    		$('#TeamEditor').modal('show');
+		}
+		function showDeleteTeam(teamId) {
+			$.post("team/deleteTeam",{teamId:teamId},function(data){
+				if(data.isFail){
+					alert(data.msg);
+				}else{
+	    			loadTeam();
+				}
+			});
+		}
 		function saveOrUpdateTeam() {
 			var teamId = $("#teamId").val();
 			var teamName = $("#teamName").val();
@@ -121,11 +166,15 @@
 							alert(data.msg);
 						}else{
 			    			$('#TeamEditor').modal('hide');
+			    			loadTeam();
 						}
 					}
 			);
 		}
-		function loadToEditor(name,servents) {
+		function loadToEditor(teamId) {
+			var name = myTeams[teamId].teamname;
+			var servents = myTeams[teamId].members;
+			$("#teamId").val(teamId);
 			if(name){
 				$("#teamName").val(name);
 			}else{
@@ -134,7 +183,7 @@
 			if(servents){
 		    	for (var i = 1; i <= 6; i++) {
 		    		if(servents[i-1]){
-						$("#teamServent"+i).val(servents[i-1]);
+						$("#teamServent"+i).val(servents[i-1].id);
 		    		}else{
 						$("#teamServent"+i).val("");
 		    		}
@@ -147,6 +196,7 @@
 		}
 		function resetEditor() {
 			$("#teamName").val("");
+			$("#teamId").val("");
 	    	for (var i = 1; i <= 6; i++) {
 				$("#teamServent"+i).val("");
 			}

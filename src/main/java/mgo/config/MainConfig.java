@@ -58,6 +58,7 @@ public class MainConfig extends JFinalConfig {
 		activeRecordPlugin.addSqlTemplate("servent.sql");
 		activeRecordPlugin.addSqlTemplate("craft.sql");
 		activeRecordPlugin.addSqlTemplate("teamMember.sql");
+		activeRecordPlugin.addSqlTemplate("team.sql");
 		me.add(activeRecordPlugin);
 	}
 
