@@ -1,6 +1,6 @@
-#sql("findAllNewsForPagination_select")
-	select id,title,create_time
+#sql("findAllNewsForPagination")
+	select id,title,create_time from news order by id desc
 #end
-#sql("findAllNewsForPagination_sqlExceptSelect")
-	from news order by id desc
+#sql("getLatestNewsCount")
+	select count(*) from news where create_time>=DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 7 DAY)
 #end

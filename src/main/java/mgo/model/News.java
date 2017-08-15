@@ -2,6 +2,7 @@ package mgo.model;
 
 import java.util.List;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 
 import mgo.model.BaseNews;
@@ -12,9 +13,12 @@ import mgo.model.BaseNews;
 @SuppressWarnings("serial")
 public class News extends BaseNews<News> {
 	public List<News> findLatestNews() {
-		Page<News> result = dao().paginate(1, 10, getSql("findAllNewsForPagination_select"),
-				getSql("findAllNewsForPagination_sqlExceptSelect"));
+		Page<News> result = paginate(1, 10, getSqlPara("findAllNewsForPagination"));
 		return result.getList();
+	}
+	
+	public int getLatestNewsCount() {
+		return Db.queryInt(getSql("getLatestNewsCount"));
 	}
 
 	public String findNewsContent(long id) {

@@ -10,6 +10,7 @@ import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.template.Engine;
 
 import mgo.account.AccountRoutes;
@@ -50,7 +51,9 @@ public class MainConfig extends JFinalConfig {
 	}
 
 	@Override
-	public void configPlugin(Plugins me) {		
+	public void configPlugin(Plugins me) {
+		me.add(new EhCachePlugin());
+		
 		C3p0Plugin c3p0Plugin = new C3p0Plugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
 		me.add(c3p0Plugin);
 		
