@@ -2,10 +2,10 @@ package mgo.shop;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.JMap;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
 import mgo.model.User;
+import mgo.util.Message;
 
 public class ShopController extends Controller {
 	public void index() {
@@ -19,6 +19,6 @@ public class ShopController extends Controller {
 		u.setCost(u.getCost() + 518);
 		u.update();
 		
-		renderJson(JMap.ok("msg", "购买成功！"));
+		renderJson(Message.ok("购买成功！"));
 	}
 }

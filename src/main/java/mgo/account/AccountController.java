@@ -13,17 +13,17 @@ import org.apache.http.util.EntityUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.JMap;
 import com.jfinal.kit.PropKit;
 
 import mgo.model.User;
+import mgo.util.Message;
 
 public class AccountController extends Controller {
 
 	@Clear(CheckLoginInterceptor.class)
 	public void login() {
 		if (!validateCaptcha("randomCode")) {
-			renderJson(JMap.fail("msg", "验证码错误"));
+			renderJson(Message.fail("验证码错误"));
 			return;
 		}
 		String username = getPara("username");
@@ -34,9 +34,9 @@ public class AccountController extends Controller {
 			u.setLastlogin(new Date());
 			u.update();
 			setSessionAttr("currentUser", u);
-			renderJson(JMap.ok());
+			renderJson(Message.ok());
 		} else {
-			renderJson(JMap.fail("msg", "登陆失败请重试"));
+			renderJson(Message.fail("登陆失败请重试"));
 		}
 	}
 
@@ -50,7 +50,7 @@ public class AccountController extends Controller {
 	@Clear(CheckLoginInterceptor.class)
 	public void reg() {
 		if (!validateCaptcha("randomCode")) {
-			renderJson(JMap.fail("msg", "验证码错误"));
+			renderJson(Message.fail("验证码错误"));
 			return;
 		}
 		String username = getPara("username");
@@ -60,7 +60,7 @@ public class AccountController extends Controller {
 
 		User u = new User().findByUsername(username);
 		if (u != null) {
-			renderJson(JMap.fail("msg", "用户名已存在"));
+			renderJson(Message.fail("用户名已存在"));
 			return;
 		}
 		
@@ -78,10 +78,11 @@ public class AccountController extends Controller {
 		renderJson("result", "ok");
 	}
 
+	@SuppressWarnings("unchecked")
 	public void getStone() {
 		User u = getSessionAttr("currentUser");
 
-		renderJson(JMap.ok("stone", u.getStone()));
+		renderJson(Message.ok().put("stone", u.getStone()));
 	}
 
 	@Clear(CheckLoginInterceptor.class)

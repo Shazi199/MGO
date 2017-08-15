@@ -4,7 +4,6 @@ import java.util.Date;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.JMap;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
 import mgo.config.Data;
@@ -13,6 +12,7 @@ import mgo.model.Servent;
 import mgo.model.User;
 import mgo.pool.Pool;
 import mgo.pool.Pool.Card;
+import mgo.util.Message;
 
 public class SummonController extends Controller {
 	public void index() {
@@ -25,7 +25,7 @@ public class SummonController extends Controller {
 	public void drawOne() {
 		User u = getSessionAttr("currentUser");
 		if (u.getStone() < 3) {
-			renderJson(JMap.fail("msg", "☯不足3个！"));
+			renderJson(Message.fail("☯不足3个！"));
 			return;
 		}
 		
@@ -46,7 +46,7 @@ public class SummonController extends Controller {
 	public void drawTen() {
 		User u = getSessionAttr("currentUser");
 		if (u.getStone() < 30) {
-			renderJson(JMap.fail("msg", "☯不足30个！"));
+			renderJson(Message.fail("☯不足30个！"));
 			return;
 		}
 		int poolId = getParaToInt("poolId");

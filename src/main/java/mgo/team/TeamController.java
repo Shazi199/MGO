@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.JMap;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
@@ -13,6 +12,7 @@ import mgo.model.Servent;
 import mgo.model.Team;
 import mgo.model.TeamMember;
 import mgo.model.User;
+import mgo.util.Message;
 
 public class TeamController extends Controller {
 	public void index() {
@@ -36,12 +36,12 @@ public class TeamController extends Controller {
 		
 		Team team = new Team().findById(teamId);
 		if (team == null || !u.getId().equals(team.getUserid())) {
-			renderJson(JMap.fail("msg", "无效队伍"));
+			renderJson(Message.fail("无效队伍"));
 			return;
 		}
 		
 		team.delete();
-		renderJson(JMap.ok());
+		renderJson(Message.ok());
 	}
 	
 	@Before(Tx.class)
@@ -53,12 +53,12 @@ public class TeamController extends Controller {
 		Long[] teamServent = getParaValuesToLong("teamServent[]");
 		
 		if (StrKit.isBlank(teamName)) {
-			renderJson(JMap.fail("msg", "队伍名不能为空"));
+			renderJson(Message.fail("队伍名不能为空"));
 			return;
 		}
 		
 		if (teamServent == null || teamServent.length == 0) {
-			renderJson(JMap.fail("msg", "队伍成员不能为空"));
+			renderJson(Message.fail("队伍成员不能为空"));
 			return;
 		}
 		
@@ -66,12 +66,12 @@ public class TeamController extends Controller {
 		for (int i = 0; i < teamServent.length; i++) {
 			Long serventId = teamServent[i];
 			if (serventId == null || serventIds.contains(serventId)) {
-				renderJson(JMap.fail("msg", "不能使用同一个角色"));
+				renderJson(Message.fail("不能使用同一个角色"));
 				return;
 			}
 			Servent s = new Servent().findById(serventId);
 			if (s == null || !u.getId().equals(s.getUserid()) ) {
-				renderJson(JMap.fail("msg", "无效角色"));
+				renderJson(Message.fail("无效角色"));
 				return;
 			}
 			
@@ -94,7 +94,7 @@ public class TeamController extends Controller {
 		} else {
 			Team team = new Team().findById(teamId);
 			if (team == null || !u.getId().equals(team.getUserid())) {
-				renderJson(JMap.fail("msg", "无效队伍"));
+				renderJson(Message.fail("无效队伍"));
 				return;
 			}
 			
@@ -116,6 +116,6 @@ public class TeamController extends Controller {
 		}
 		
 
-		renderJson(JMap.ok());
+		renderJson(Message.ok());
 	}
 }
