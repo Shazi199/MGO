@@ -19,6 +19,7 @@ public class _MappingKit {
 		arp.addMapping("craft", "id", Craft.class);
 		// Composite Primary Key order: sid,userid
 		arp.addMapping("item", "sid,userid", Item.class);
+		arp.addMapping("news", "id", News.class);
 		arp.addMapping("oauth", "id", Oauth.class);
 		arp.addMapping("servent", "id", Servent.class);
 		arp.addMapping("team", "id", Team.class);

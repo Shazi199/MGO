@@ -18,6 +18,7 @@ import mgo.common.GlobalAttributeInterceptor;
 import mgo.detail.DetailRoutes;
 import mgo.index.IndexRoutes;
 import mgo.model._MappingKit;
+import mgo.news.NewsRoutes;
 import mgo.shop.ShopRoutes;
 import mgo.summon.SummonRoutes;
 import mgo.team.TeamRoutes;
@@ -39,6 +40,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(new ShopRoutes());
 		me.add(new DetailRoutes());
 		me.add(new TeamRoutes());
+		me.add(new NewsRoutes());
 	}
 
 	@Override
@@ -48,9 +50,10 @@ public class MainConfig extends JFinalConfig {
 	}
 
 	@Override
-	public void configPlugin(Plugins me) {
+	public void configPlugin(Plugins me) {		
 		C3p0Plugin c3p0Plugin = new C3p0Plugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
 		me.add(c3p0Plugin);
+		
 		ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
 		_MappingKit.mapping(activeRecordPlugin);
 		activeRecordPlugin.setBaseSqlTemplatePath(PathKit.getRootClassPath());
@@ -59,6 +62,7 @@ public class MainConfig extends JFinalConfig {
 		activeRecordPlugin.addSqlTemplate("craft.sql");
 		activeRecordPlugin.addSqlTemplate("teamMember.sql");
 		activeRecordPlugin.addSqlTemplate("team.sql");
+		activeRecordPlugin.addSqlTemplate("news.sql");
 		me.add(activeRecordPlugin);
 	}
 
