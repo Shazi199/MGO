@@ -1,0 +1,20 @@
+#include("../common/_layout.html")
+#include("../common/_navbar.html")
+#@layout()
+
+#define content()
+	#@navbar("setting")
+	<div class="container">
+		<h1>设置</h1>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a href="https://api.weibo.com/oauth2/authorize?client_id=#(weibo_appid ??)&response_type=code&redirect_uri=http://#(weibo_url ??)/account/weiboBinding" target="_blank" class="btn btn-default btn-danger" type="button" id="weiboBinding">
+				绑定微博
+			</a>
+		</div>
+	</div>
+	<script type="text/javascript">
+	</script>
+#end
+
+#define css()
+#end

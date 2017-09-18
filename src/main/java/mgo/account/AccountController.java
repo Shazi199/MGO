@@ -3,11 +3,14 @@ package mgo.account;
 import java.util.Date;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.PropKit;
+import com.jfinal.plugin.activerecord.tx.Tx;
 
+import mgo.model.Oauth;
 import mgo.model.User;
 import mgo.util.Message;
 
@@ -100,5 +103,36 @@ public class AccountController extends Controller {
 		} else {
 			renderText("未关联有效账户");
 		}
+	}
+	
+	@Before(Tx.class)
+	public void weiboBinding() {
+		User u = getSessionAttr("currentUser");
+		
+		String code = getPara("code");
+		String url = "https://api.weibo.com/oauth2/access_token?client_id=" + PropKit.get("weibo_appid")
+		+ "&client_secret=" + PropKit.get("weibo_secretid") + "&grant_type=authorization_code"
+		+ "&redirect_uri=http://" + PropKit.get("weibo_url") + "/account/weiboLogin" + "&code=" + code;
+
+		String content = HttpKit.post(url, null);
+
+		JSONObject object = JSONObject.parseObject(content);
+		String uid = object.getString("uid");
+		String token = object.getString("access_token");
+		Oauth oauth = new Oauth().findOauthByType(u.getId(), "weibo");
+		if (oauth == null) {
+			oauth = new Oauth();
+			oauth.setAuthid(uid);
+			oauth.setUid(u.getId());
+			oauth.setType("weibo");
+			oauth.setToken(token);
+			oauth.save();
+		} else {
+			oauth.setAuthid(uid);
+			oauth.setToken(token);
+			oauth.update();
+		}
+
+		renderText("绑定成功！");
 	}
 }
