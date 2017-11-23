@@ -14,7 +14,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Long getId() {
-		return get("id");
+		return getLong("id");
 	}
 
 	public void setUserid(java.lang.Long userid) {
@@ -22,7 +22,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Long getUserid() {
-		return get("userid");
+		return getLong("userid");
 	}
 
 	public void setSid(java.lang.Integer sid) {
@@ -30,7 +30,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSid() {
-		return get("sid");
+		return getInt("sid");
 	}
 
 	public void setLevel(java.lang.Integer level) {
@@ -38,7 +38,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getLevel() {
-		return get("level");
+		return getInt("level");
 	}
 
 	public void setPhase(java.lang.Integer phase) {
@@ -46,7 +46,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getPhase() {
-		return get("phase");
+		return getInt("phase");
 	}
 
 	public void setAtk(java.lang.Integer atk) {
@@ -54,7 +54,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getAtk() {
-		return get("atk");
+		return getInt("atk");
 	}
 
 	public void setHealth(java.lang.Integer health) {
@@ -62,7 +62,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getHealth() {
-		return get("health");
+		return getInt("health");
 	}
 
 	public void setNoble(java.lang.Integer noble) {
@@ -70,7 +70,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getNoble() {
-		return get("noble");
+		return getInt("noble");
 	}
 
 	public void setExp(java.lang.Integer exp) {
@@ -78,7 +78,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getExp() {
-		return get("exp");
+		return getInt("exp");
 	}
 
 	public void setSkill1(java.lang.Integer skill1) {
@@ -86,7 +86,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill1() {
-		return get("skill1");
+		return getInt("skill1");
 	}
 
 	public void setSkill2(java.lang.Integer skill2) {
@@ -94,7 +94,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill2() {
-		return get("skill2");
+		return getInt("skill2");
 	}
 
 	public void setSkill3(java.lang.Integer skill3) {
@@ -102,7 +102,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill3() {
-		return get("skill3");
+		return getInt("skill3");
 	}
 
 	public void setSkill1level(java.lang.Integer skill1level) {
@@ -110,7 +110,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill1level() {
-		return get("skill1level");
+		return getInt("skill1level");
 	}
 
 	public void setSkill2level(java.lang.Integer skill2level) {
@@ -118,7 +118,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill2level() {
-		return get("skill2level");
+		return getInt("skill2level");
 	}
 
 	public void setSkill3level(java.lang.Integer skill3level) {
@@ -126,7 +126,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSkill3level() {
-		return get("skill3level");
+		return getInt("skill3level");
 	}
 
 	public void setCreated(java.util.Date created) {

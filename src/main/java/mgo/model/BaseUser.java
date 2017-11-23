@@ -14,7 +14,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.Long getId() {
-		return get("id");
+		return getLong("id");
 	}
 
 	public void setUsername(java.lang.String username) {
@@ -22,7 +22,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getUsername() {
-		return get("username");
+		return getStr("username");
 	}
 
 	public void setUserpass(java.lang.String userpass) {
@@ -30,7 +30,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getUserpass() {
-		return get("userpass");
+		return getStr("userpass");
 	}
 
 	public void setEmail(java.lang.String email) {
@@ -38,7 +38,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getEmail() {
-		return get("email");
+		return getStr("email");
 	}
 
 	public void setNickname(java.lang.String nickname) {
@@ -46,7 +46,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getNickname() {
-		return get("nickname");
+		return getStr("nickname");
 	}
 
 	public void setStone(java.lang.Integer stone) {
@@ -54,7 +54,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.Integer getStone() {
-		return get("stone");
+		return getInt("stone");
 	}
 
 	public void setCost(java.lang.Integer cost) {
@@ -62,7 +62,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.Integer getCost() {
-		return get("cost");
+		return getInt("cost");
 	}
 
 	public void setCreated(java.util.Date created) {

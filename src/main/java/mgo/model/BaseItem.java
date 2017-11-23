@@ -14,7 +14,7 @@ public abstract class BaseItem<M extends BaseItem<M>> extends Model<M> implement
 	}
 
 	public java.lang.Integer getSid() {
-		return get("sid");
+		return getInt("sid");
 	}
 
 	public void setUserid(java.lang.Long userid) {
@@ -22,7 +22,7 @@ public abstract class BaseItem<M extends BaseItem<M>> extends Model<M> implement
 	}
 
 	public java.lang.Long getUserid() {
-		return get("userid");
+		return getLong("userid");
 	}
 
 	public void setAmount(java.lang.Integer amount) {
@@ -30,7 +30,7 @@ public abstract class BaseItem<M extends BaseItem<M>> extends Model<M> implement
 	}
 
 	public java.lang.Integer getAmount() {
-		return get("amount");
+		return getInt("amount");
 	}
 
 }

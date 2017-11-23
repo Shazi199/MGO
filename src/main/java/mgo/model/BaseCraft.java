@@ -14,7 +14,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Long getId() {
-		return get("id");
+		return getLong("id");
 	}
 
 	public void setUserid(java.lang.Long userid) {
@@ -22,7 +22,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Long getUserid() {
-		return get("userid");
+		return getLong("userid");
 	}
 
 	public void setSid(java.lang.Integer sid) {
@@ -30,7 +30,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Integer getSid() {
-		return get("sid");
+		return getInt("sid");
 	}
 
 	public void setLevel(java.lang.Integer level) {
@@ -38,7 +38,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Integer getLevel() {
-		return get("level");
+		return getInt("level");
 	}
 
 	public void setPhase(java.lang.Integer phase) {
@@ -46,7 +46,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Integer getPhase() {
-		return get("phase");
+		return getInt("phase");
 	}
 
 	public void setExp(java.lang.Integer exp) {
@@ -54,7 +54,7 @@ public abstract class BaseCraft<M extends BaseCraft<M>> extends Model<M> impleme
 	}
 
 	public java.lang.Integer getExp() {
-		return get("exp");
+		return getInt("exp");
 	}
 
 	public void setCreated(java.util.Date created) {

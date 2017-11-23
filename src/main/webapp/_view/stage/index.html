@@ -1,0 +1,51 @@
+#include("../common/_layout.html")
+#include("../common/_navbar.html")
+#@layout()
+
+#define content()
+	#@navbar("stage")
+	<div class="container">
+		<h1>选择关卡</h1>
+		#for(stage : stages)
+		<button class="btn btn-default btn-lg btn-block newsBtn" id="#(stage.id)">
+			<span class="stageTitle">#(stage.name)</span>
+			<span class="stageLevel">推荐等级：#(stage.level)</span>
+		</button>
+		#end
+	</div>
+	<div class="modal fade" id="stageDetail" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+            	<div class="modal-header">
+            		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h1 class="modal-title">选择队伍</h1>
+	            </div>
+	            <div class="modal-body">
+	            	#for(team : teams)
+	            	<label><input type="radio" name="teamSelect">#(for.count).#(team.teamname)</label>
+	            	#end
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(".newsBtn").click(function(){
+			var id = $(this).attr("id");
+    		$('#stageDetail').modal('show');
+		});
+	</script>
+#end
+
+#define css()
+<style type="text/css">
+.stageTitle {
+	float:left;
+}
+.stageLevel {
+	float:right;
+}
+</style>
+#end

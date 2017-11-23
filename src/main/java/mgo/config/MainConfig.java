@@ -22,6 +22,7 @@ import mgo.model._MappingKit;
 import mgo.news.NewsRoutes;
 import mgo.setting.SettingRoutes;
 import mgo.shop.ShopRoutes;
+import mgo.stage.StageRoutes;
 import mgo.summon.SummonRoutes;
 import mgo.team.TeamRoutes;
 
@@ -44,6 +45,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(new TeamRoutes());
 		me.add(new NewsRoutes());
 		me.add(new SettingRoutes());
+		me.add(new StageRoutes());
 	}
 
 	@Override
@@ -69,6 +71,7 @@ public class MainConfig extends JFinalConfig {
 		activeRecordPlugin.addSqlTemplate("team.sql");
 		activeRecordPlugin.addSqlTemplate("news.sql");
 		activeRecordPlugin.addSqlTemplate("oauth.sql");
+		activeRecordPlugin.addSqlTemplate("stage.sql");
 		me.add(activeRecordPlugin);
 	}
 
