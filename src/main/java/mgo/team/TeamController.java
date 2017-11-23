@@ -41,6 +41,7 @@ public class TeamController extends Controller {
 		}
 		
 		team.delete();
+		new TeamMember().deleteTeamMembersByTeamId(teamId);
 		renderJson(Message.ok());
 	}
 	
