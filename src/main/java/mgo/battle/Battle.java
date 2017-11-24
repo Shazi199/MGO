@@ -29,6 +29,11 @@ public class Battle {
 			poolCards.remove(i);
 		}
 	}
+	
+	public void addPlayer(Servent servent) {
+		FriendUnit u = generateFriendUnit(servent);
+		players.add(u);
+	}
 
 	public static EnemyUnit generateEnemyUnit(Servent servent) {
 		EnemyUnit unit = new EnemyUnit();
