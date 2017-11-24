@@ -12,7 +12,7 @@ public abstract class BaseNews<M extends BaseNews<M>> extends Model<M> implement
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.Long getId() {
 		return getLong("id");
 	}
@@ -20,7 +20,7 @@ public abstract class BaseNews<M extends BaseNews<M>> extends Model<M> implement
 	public void setTitle(java.lang.String title) {
 		set("title", title);
 	}
-
+	
 	public java.lang.String getTitle() {
 		return getStr("title");
 	}
@@ -28,7 +28,7 @@ public abstract class BaseNews<M extends BaseNews<M>> extends Model<M> implement
 	public void setContent(java.lang.String content) {
 		set("content", content);
 	}
-
+	
 	public java.lang.String getContent() {
 		return getStr("content");
 	}
@@ -36,7 +36,7 @@ public abstract class BaseNews<M extends BaseNews<M>> extends Model<M> implement
 	public void setCreateTime(java.util.Date createTime) {
 		set("create_time", createTime);
 	}
-
+	
 	public java.util.Date getCreateTime() {
 		return get("create_time");
 	}

@@ -12,7 +12,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.Long getId() {
 		return getLong("id");
 	}
@@ -20,7 +20,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setUsername(java.lang.String username) {
 		set("username", username);
 	}
-
+	
 	public java.lang.String getUsername() {
 		return getStr("username");
 	}
@@ -28,7 +28,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setUserpass(java.lang.String userpass) {
 		set("userpass", userpass);
 	}
-
+	
 	public java.lang.String getUserpass() {
 		return getStr("userpass");
 	}
@@ -36,7 +36,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setEmail(java.lang.String email) {
 		set("email", email);
 	}
-
+	
 	public java.lang.String getEmail() {
 		return getStr("email");
 	}
@@ -44,7 +44,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setNickname(java.lang.String nickname) {
 		set("nickname", nickname);
 	}
-
+	
 	public java.lang.String getNickname() {
 		return getStr("nickname");
 	}
@@ -52,7 +52,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setStone(java.lang.Integer stone) {
 		set("stone", stone);
 	}
-
+	
 	public java.lang.Integer getStone() {
 		return getInt("stone");
 	}
@@ -60,7 +60,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setCost(java.lang.Integer cost) {
 		set("cost", cost);
 	}
-
+	
 	public java.lang.Integer getCost() {
 		return getInt("cost");
 	}
@@ -68,7 +68,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setCreated(java.util.Date created) {
 		set("created", created);
 	}
-
+	
 	public java.util.Date getCreated() {
 		return get("created");
 	}
@@ -76,7 +76,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	public void setLastlogin(java.util.Date lastlogin) {
 		set("lastlogin", lastlogin);
 	}
-
+	
 	public java.util.Date getLastlogin() {
 		return get("lastlogin");
 	}

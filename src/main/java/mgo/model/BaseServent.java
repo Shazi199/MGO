@@ -12,7 +12,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.Long getId() {
 		return getLong("id");
 	}
@@ -20,7 +20,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setUserid(java.lang.Long userid) {
 		set("userid", userid);
 	}
-
+	
 	public java.lang.Long getUserid() {
 		return getLong("userid");
 	}
@@ -28,7 +28,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSid(java.lang.Integer sid) {
 		set("sid", sid);
 	}
-
+	
 	public java.lang.Integer getSid() {
 		return getInt("sid");
 	}
@@ -36,7 +36,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setLevel(java.lang.Integer level) {
 		set("level", level);
 	}
-
+	
 	public java.lang.Integer getLevel() {
 		return getInt("level");
 	}
@@ -44,7 +44,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setPhase(java.lang.Integer phase) {
 		set("phase", phase);
 	}
-
+	
 	public java.lang.Integer getPhase() {
 		return getInt("phase");
 	}
@@ -52,7 +52,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setAtk(java.lang.Integer atk) {
 		set("atk", atk);
 	}
-
+	
 	public java.lang.Integer getAtk() {
 		return getInt("atk");
 	}
@@ -60,7 +60,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setHealth(java.lang.Integer health) {
 		set("health", health);
 	}
-
+	
 	public java.lang.Integer getHealth() {
 		return getInt("health");
 	}
@@ -68,7 +68,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setNoble(java.lang.Integer noble) {
 		set("noble", noble);
 	}
-
+	
 	public java.lang.Integer getNoble() {
 		return getInt("noble");
 	}
@@ -76,7 +76,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setExp(java.lang.Integer exp) {
 		set("exp", exp);
 	}
-
+	
 	public java.lang.Integer getExp() {
 		return getInt("exp");
 	}
@@ -84,7 +84,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill1(java.lang.Integer skill1) {
 		set("skill1", skill1);
 	}
-
+	
 	public java.lang.Integer getSkill1() {
 		return getInt("skill1");
 	}
@@ -92,7 +92,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill2(java.lang.Integer skill2) {
 		set("skill2", skill2);
 	}
-
+	
 	public java.lang.Integer getSkill2() {
 		return getInt("skill2");
 	}
@@ -100,7 +100,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill3(java.lang.Integer skill3) {
 		set("skill3", skill3);
 	}
-
+	
 	public java.lang.Integer getSkill3() {
 		return getInt("skill3");
 	}
@@ -108,7 +108,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill1level(java.lang.Integer skill1level) {
 		set("skill1level", skill1level);
 	}
-
+	
 	public java.lang.Integer getSkill1level() {
 		return getInt("skill1level");
 	}
@@ -116,7 +116,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill2level(java.lang.Integer skill2level) {
 		set("skill2level", skill2level);
 	}
-
+	
 	public java.lang.Integer getSkill2level() {
 		return getInt("skill2level");
 	}
@@ -124,7 +124,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setSkill3level(java.lang.Integer skill3level) {
 		set("skill3level", skill3level);
 	}
-
+	
 	public java.lang.Integer getSkill3level() {
 		return getInt("skill3level");
 	}
@@ -132,7 +132,7 @@ public abstract class BaseServent<M extends BaseServent<M>> extends Model<M> imp
 	public void setCreated(java.util.Date created) {
 		set("created", created);
 	}
-
+	
 	public java.util.Date getCreated() {
 		return get("created");
 	}

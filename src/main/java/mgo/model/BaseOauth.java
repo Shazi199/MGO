@@ -12,7 +12,7 @@ public abstract class BaseOauth<M extends BaseOauth<M>> extends Model<M> impleme
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.Long getId() {
 		return getLong("id");
 	}
@@ -20,7 +20,7 @@ public abstract class BaseOauth<M extends BaseOauth<M>> extends Model<M> impleme
 	public void setAuthid(java.lang.String authid) {
 		set("authid", authid);
 	}
-
+	
 	public java.lang.String getAuthid() {
 		return getStr("authid");
 	}
@@ -28,7 +28,7 @@ public abstract class BaseOauth<M extends BaseOauth<M>> extends Model<M> impleme
 	public void setUid(java.lang.Long uid) {
 		set("uid", uid);
 	}
-
+	
 	public java.lang.Long getUid() {
 		return getLong("uid");
 	}
@@ -36,7 +36,7 @@ public abstract class BaseOauth<M extends BaseOauth<M>> extends Model<M> impleme
 	public void setType(java.lang.String type) {
 		set("type", type);
 	}
-
+	
 	public java.lang.String getType() {
 		return getStr("type");
 	}
@@ -44,7 +44,7 @@ public abstract class BaseOauth<M extends BaseOauth<M>> extends Model<M> impleme
 	public void setToken(java.lang.String token) {
 		set("token", token);
 	}
-
+	
 	public java.lang.String getToken() {
 		return getStr("token");
 	}

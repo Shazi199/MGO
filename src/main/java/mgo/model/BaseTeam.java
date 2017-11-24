@@ -12,7 +12,7 @@ public abstract class BaseTeam<M extends BaseTeam<M>> extends Model<M> implement
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.Long getId() {
 		return getLong("id");
 	}
@@ -20,7 +20,7 @@ public abstract class BaseTeam<M extends BaseTeam<M>> extends Model<M> implement
 	public void setUserid(java.lang.Long userid) {
 		set("userid", userid);
 	}
-
+	
 	public java.lang.Long getUserid() {
 		return getLong("userid");
 	}
@@ -28,7 +28,7 @@ public abstract class BaseTeam<M extends BaseTeam<M>> extends Model<M> implement
 	public void setTeamname(java.lang.String teamname) {
 		set("teamname", teamname);
 	}
-
+	
 	public java.lang.String getTeamname() {
 		return getStr("teamname");
 	}
