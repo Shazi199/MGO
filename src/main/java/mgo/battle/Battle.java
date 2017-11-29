@@ -34,6 +34,11 @@ public class Battle {
 		FriendUnit u = generateFriendUnit(servent);
 		players.add(u);
 	}
+	
+	public void addEnemy(Servent servent) {
+		EnemyUnit u = generateEnemyUnit(servent);
+		enemies.add(u);
+	}
 
 	public static EnemyUnit generateEnemyUnit(Servent servent) {
 		EnemyUnit unit = new EnemyUnit();

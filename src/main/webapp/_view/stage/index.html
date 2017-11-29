@@ -7,7 +7,7 @@
 	<div class="container">
 		<h1>选择关卡</h1>
 		#for(stage : stages)
-		<button class="btn btn-default btn-lg btn-block newsBtn" id="#(stage.id)">
+		<button class="btn btn-default btn-lg btn-block stageBtn" id="#(stage.id)">
 			<span class="stageTitle">#(stage.name)</span>
 			<span class="stageLevel">推荐等级：#(stage.level)</span>
 		</button>
@@ -22,19 +22,34 @@
 	            </div>
 	            <div class="modal-body">
 	            	#for(team : teams)
-	            	<label><input type="radio" name="teamSelect">#(for.count).#(team.teamname)</label>
+	            	<label><input type="radio" name="teamSelect" value="#(team.id)">#(for.count).#(team.teamname)</label>
 	            	#end
 	            </div>
 	            <div class="modal-footer">
+        			<button type="button" class="btn btn-primary" id="startBattle">开始</button>
 	                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
 	            </div>
 	        </div>
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(".newsBtn").click(function(){
+		var selectStageId = null;
+		$(".stageBtn").click(function(){
 			var id = $(this).attr("id");
     		$('#stageDetail').modal('show');
+    		selectStageId = id;
+		});
+		
+		$("#startBattle").click(function(){
+			var teamId = $("[name=teamSelect]:checked").val();
+			$.post("stage/startBattle",{"stageId":selectStageId,"teamId":teamId},function(data){
+				if(data.isFail){
+					alert(data.msg);
+					return;
+				}else{
+					location = "stage";
+				}
+			},"json");
 		});
 	</script>
 #end

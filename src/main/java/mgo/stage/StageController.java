@@ -16,6 +16,11 @@ public class StageController extends Controller {
 	private static final String SESSION_BATTLE_KEY = "session_battle_key";
 
 	public void index() {
+		if (getSessionAttr(SESSION_BATTLE_KEY) != null) {
+			battleIndex();
+			return;
+		}
+		
 		User u = getSessionAttr("currentUser");
 
 		List<Team> teams = new Team().findTeamsByUserid(u.getId());
@@ -31,16 +36,18 @@ public class StageController extends Controller {
 			renderJson(Message.ok());
 		}
 
-		long teamId = getParaToLong("teamId");
-		int stageId = getParaToInt("stageId");
+		long teamId = getParaToLong("teamId", new Long(-1));
+		int stageId = getParaToInt("stageId", new Integer(-1));
 
 		Team team = new Team().findById(teamId);
 		if (team == null) {
 			renderJson(Message.fail("所选队伍不存在"));
+			return;
 		}
 		Stage stage = new Stage().findById(stageId);
 		if (stage == null) {
 			renderJson(Message.fail("所选关卡不存在"));
+			return;
 		}
 
 		Battle battle = new Battle();
@@ -48,9 +55,14 @@ public class StageController extends Controller {
 		for (TeamMember member : members) {
 			Servent s = new Servent().findById(member.getServentid());
 			battle.addPlayer(s);
+			battle.addEnemy(s);
 		}
 
 		setSessionAttr(SESSION_BATTLE_KEY, battle);
 		renderJson(Message.ok());
+	}
+	
+	private void battleIndex() {
+		renderTemplate("battleIndex.html");
 	}
 }
