@@ -13,7 +13,7 @@ import mgo.model.User;
 import mgo.util.Message;
 
 public class StageController extends Controller {
-	private static final String SESSION_BATTLE_KEY = "session_battle_key";
+	public static final String SESSION_BATTLE_KEY = "session_battle_key";
 
 	public void index() {
 		if (getSessionAttr(SESSION_BATTLE_KEY) != null) {

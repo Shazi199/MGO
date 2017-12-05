@@ -8,6 +8,7 @@ public class StageRoutes extends Routes {
 	public void config() {
 		setBaseViewPath("_view");
 		add("/stage", StageController.class);
+		add("/battle", BattleController.class);
 	}
 
 }

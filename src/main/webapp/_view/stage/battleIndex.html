@@ -5,18 +5,58 @@
 #define content()
 	#@navbar("stage")
 	<div class="container mainContainer">
-		<div class="panel panel-default">
+		<div class="panel panel-danger">
 		  <div class="panel-heading">敌方</div>
-		  <div class="panel-body" id="enemyUnits">
-		  </div>
+		  <table class="table table-hover" id="enemyUnits">
+		  </table>
 		</div>
 		
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 		  <div class="panel-heading">我方</div>
-		  <div class="panel-body" id="friendUnits">
-		  </div>
+		  <table class="table table-hover" id="friendUnits">
+		  </table>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			$.post("battle/getEnemiesInfo",function(data){
+				for(var i=0;i<data.length;i++){
+					$("#enemyUnits").append(createEnemyRow(data[i]));
+				}
+			},"json");
+			
+			$.post("battle/getFriendsInfo",function(data){
+				for(var i=0;i<data.length;i++){
+					$("#friendUnits").append(createFriendRow(data[i]));
+				}
+			},"json");
+		});
+		
+		function createEnemyRow(data) {
+			var cardInfo = SERVENT_DB[data.sid];
+			var row = "<tr id=\"enemy_1\">";
+			row += "<td>"+cardInfo.name+"</td>";
+			row += "<td>Lv."+data.level+"</td>";
+			row += "<td>"+CLASS_DB[data.type]+"</td>";
+			row += "<td>"+data.hp+"/"+data.maxhp+"</td>";
+			row += "<td>"+data.np+"/"+data.maxnp+"</td>";
+			row += "</tr>";
+			return row;
+		}
+		
+		function createFriendRow(data) {
+			var cardInfo = SERVENT_DB[data.sid];
+			var row = "<tr id=\"friend_1\">";
+			row += "<td>"+cardInfo.name+"</td>";
+			row += "<td>Lv."+data.level+"</td>";
+			row += "<td>"+CLASS_DB[data.type]+"</td>";
+			row += "<td>"+data.hp+"/"+data.maxhp+"</td>";
+			row += "<td>"+data.np+"%</td>";
+			row += "</tr>";
+			return row;
+		}
+	</script>
+	<script src="js/db.js"></script>
 #end
 
 #define css()
