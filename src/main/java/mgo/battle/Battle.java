@@ -32,11 +32,13 @@ public class Battle {
 	
 	public void addPlayer(Servent servent) {
 		FriendUnit u = generateFriendUnit(servent);
+		u.index = players.size();
 		players.add(u);
 	}
 	
 	public void addEnemy(Servent servent) {
 		EnemyUnit u = generateEnemyUnit(servent);
+		u.index = enemies.size();
 		enemies.add(u);
 	}
 

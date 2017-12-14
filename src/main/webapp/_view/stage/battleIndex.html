@@ -16,21 +16,58 @@
 		  <table class="table table-hover" id="friendUnits">
 		  </table>
 		</div>
+		
+		<div class="panel panel-success">
+		  <div class="panel-heading">指令卡</div>
+		  <div class="panel-body" id="commandCards"></div>
+		</div>
+		
+		<div class="panel panel-info">
+		  <div class="panel-heading">战斗记录</div>
+		  <div class="panel-body" id="battleLog">
+		  	<p>A->B</p>
+		  </div>
+		</div>
 	</div>
 	<script type="text/javascript">
+		var enemyUnits = null;
+		var friendUnits = null;
+		var commandCards = null;
+		
 		$(function(){
+			getEnemiesInfo();
+			getFriendsInfo(getCardsInfo);
+		});
+		
+		function getEnemiesInfo() {
 			$.post("battle/getEnemiesInfo",function(data){
+				enemyUnits = data;
 				for(var i=0;i<data.length;i++){
 					$("#enemyUnits").append(createEnemyRow(data[i]));
 				}
 			},"json");
-			
+		}
+		
+		function getFriendsInfo(callback) {
 			$.post("battle/getFriendsInfo",function(data){
+				friendUnits = data;
 				for(var i=0;i<data.length;i++){
 					$("#friendUnits").append(createFriendRow(data[i]));
 				}
+				if(callback!=null){
+					callback();
+				}
 			},"json");
-		});
+		}
+		
+		function getCardsInfo() {
+			$.post("battle/getCardsInfo",function(data){
+				commandCards = data;
+				for(var i=0;i<data.length;i++){
+					$("#commandCards").append(createCardsButton(data[i]));
+				}
+			},"json");
+		}
 		
 		function createEnemyRow(data) {
 			var cardInfo = SERVENT_DB[data.sid];
@@ -54,6 +91,14 @@
 			row += "<td>"+data.np+"%</td>";
 			row += "</tr>";
 			return row;
+		}
+		
+		function createCardsButton(data) {
+			var friend = friendUnits[data.unitIndex];
+			var friendInfo = SERVENT_DB[friend.sid];
+			var btn = "<button class=\"btn btn-default\">";
+			btn += friendInfo.name + " - " + data.type;
+			btn += "</button>";
 		}
 	</script>
 	<script src="js/db.js"></script>

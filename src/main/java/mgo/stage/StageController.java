@@ -57,6 +57,7 @@ public class StageController extends Controller {
 			battle.addPlayer(s);
 			battle.addEnemy(s);
 		}
+		battle.drawCard();
 
 		setSessionAttr(SESSION_BATTLE_KEY, battle);
 		renderJson(Message.ok());

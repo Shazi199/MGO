@@ -8,6 +8,7 @@ public class Unit {
 	public int type;
 	public int sid;
 	public int level;
+	public int index;
 
 	public int getHp() {
 		return hp;
@@ -63,6 +64,14 @@ public class Unit {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 }

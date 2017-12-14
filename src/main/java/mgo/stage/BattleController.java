@@ -14,4 +14,9 @@ public class BattleController extends Controller {
 		Battle battle = getSessionAttr(StageController.SESSION_BATTLE_KEY);
 		renderJson(battle.players);
 	}
+	
+	public void getCardsInfo() {
+		Battle battle = getSessionAttr(StageController.SESSION_BATTLE_KEY);
+		renderJson(battle.currentCards);
+	}
 }
