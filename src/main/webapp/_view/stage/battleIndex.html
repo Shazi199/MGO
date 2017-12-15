@@ -18,29 +18,38 @@
 		</div>
 		
 		<div class="panel panel-success">
-		  <div class="panel-heading">指令卡</div>
+		  <div class="panel-heading">指令</div>
 		  <div class="panel-body" id="commandCards"></div>
 		</div>
 		
 		<div class="panel panel-info">
 		  <div class="panel-heading">战斗记录</div>
-		  <div class="panel-body" id="battleLog">
-		  	<p>A->B</p>
-		  </div>
+		  <div class="panel-body" id="battleLog"></div>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var enemyUnits = null;
 		var friendUnits = null;
 		var commandCards = null;
+		var selectedCards = [null,null,null];
+		var indexShow = ["①","②","③"];
 		
 		$(function(){
-			getEnemiesInfo();
-			getFriendsInfo(getCardsInfo);
+			updateAllInfo(true);
 		});
+		
+		function updateAllInfo(refreshCard) {
+			getEnemiesInfo();
+			if(refreshCard){
+				getFriendsInfo(getCardsInfo);
+			}else{
+				getFriendsInfo();
+			}
+		}
 		
 		function getEnemiesInfo() {
 			$.post("battle/getEnemiesInfo",function(data){
+				$("#enemyUnits tr").remove();
 				enemyUnits = data;
 				for(var i=0;i<data.length;i++){
 					$("#enemyUnits").append(createEnemyRow(data[i]));
@@ -50,6 +59,7 @@
 		
 		function getFriendsInfo(callback) {
 			$.post("battle/getFriendsInfo",function(data){
+				$("#friendUnits tr").remove();
 				friendUnits = data;
 				for(var i=0;i<data.length;i++){
 					$("#friendUnits").append(createFriendRow(data[i]));
@@ -62,9 +72,10 @@
 		
 		function getCardsInfo() {
 			$.post("battle/getCardsInfo",function(data){
+				$("#commandCards button").remove();
 				commandCards = data;
 				for(var i=0;i<data.length;i++){
-					$("#commandCards").append(createCardsButton(data[i]));
+					$("#commandCards").append(createCardsButton(data[i], i));
 				}
 			},"json");
 		}
@@ -93,10 +104,10 @@
 			return row;
 		}
 		
-		function createCardsButton(data) {
+		function createCardsButton(data, index) {
 			var friend = friendUnits[data.unitIndex];
 			var friendInfo = SERVENT_DB[friend.sid];
-			var btn = "<button class=\"btn btn-lg "+btnColor(data.type)+"\">";
+			var btn = "<button class=\"btn btn-lg "+btnColor(data.type)+"\" id=\"card_"+index+"\" onclick=\"cardSelect(this)\">";
 			btn += friendInfo.name;
 			btn += "</button>";
 			return btn;
@@ -113,6 +124,74 @@
 				default:
 					return "btn-default";
 			}
+		}
+		
+		function cardSelect(btn) {
+			var index = $(btn).attr("id").split("_")[1];
+			if($(btn).hasClass("active")){
+				$(btn).removeClass("active");
+				for(var i=0;i<selectedCards.length;i++){
+					if(selectedCards[i]==index){
+						selectedCards[i]=null;
+						$(btn).html($(btn).html().substr(1));
+						break;
+					}
+				}
+			}else{
+				$(btn).addClass("active");
+				for(var i=0;i<selectedCards.length;i++){
+					if(selectedCards[i]==null){
+						selectedCards[i]=index;
+						$(btn).html(indexShow[i]+$(btn).html());
+						break;
+					}
+				}
+				var selectOK = true;
+				for(var i=0;i<selectedCards.length;i++){
+					if(selectedCards[i]==null){
+						selectOK = false;
+						break;
+					}
+				}
+				if(selectOK){
+					$("#commandCards button").attr("disabled","disabled");
+					sendCommand();
+				}
+			}
+		}
+		
+		function sendCommand() {
+			$.post("battle/run",{"selectCards":selectedCards.join(",")},function(data){
+				var isEndBattle = false;
+				for(var i=0;i<data.length;i++){
+					if(data[i].log=="win"){
+						isEndBattle = true;
+					}else{					
+						var friend = friendUnits[data[i].from];
+						var friendInfo = SERVENT_DB[friend.sid];
+						var enemy = enemyUnits[data[i].to];
+						var enemyInfo = SERVENT_DB[enemy.sid];
+						var div = "<div>"+friendInfo.name+" 对 "+enemyInfo.name+" 造成了 "+data[i].log+" 点伤害</div>";
+						$("#battleLog").prepend(div);
+					}
+				}
+				updateAllInfo(!isEndBattle);
+				selectedCards = [null,null,null];
+				if(isEndBattle){
+					createEndBattleButton();
+				}
+			},"json");
+		}
+		
+		function createEndBattleButton() {
+			$("#commandCards button").remove();
+			$("#commandCards").append("<button class=\"btn btn-lg\" onclick=\"endBattle()\">战斗结束</button>");
+		}
+		
+		function endBattle() {
+			$.post("battle/endBattle",function(data){
+				location = "stage";
+			});
 		}
 	</script>
 	<script src="js/db.js"></script>

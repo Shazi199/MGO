@@ -18,6 +18,7 @@ public class Battle {
 	public List<Card> poolCards = new ArrayList<Card>();
 
 	public void drawCard() {
+		currentCards.clear();
 		if (poolCards.size() == 0) {
 			for (int i = 0; i < players.size(); i++) {
 				poolCards.addAll(players.get(i).cards);
@@ -30,6 +31,71 @@ public class Battle {
 		}
 	}
 	
+	public List<Result> run(int[] cards) {
+		List<Result> results = new ArrayList<Result>();
+
+		EnemyUnit target = getFirstAliveEnemy();
+		for (int cardIndex : cards) {
+			if (target == null) {
+				break;
+			}
+			Card card = currentCards.get(cardIndex);
+			int damage = (int) (card.unit.atk * getTypePower(card.getType()));
+			target.hp -= damage;
+			Result result = new Result();
+			result.from = card.unit.index;
+			result.to = target.index;
+			result.log = String.valueOf(damage);
+			results.add(result);
+			if (target.hp < 0) {
+				target.hp = 0;
+				target = getFirstAliveEnemy();
+			}
+		}
+		
+		if (isWin()) {
+			Result result = new Result();
+			result.from = -1;
+			result.to = -1;
+			result.log = "win";
+			results.add(result);
+		}
+
+		drawCard();
+		return results;
+	}
+	
+	private EnemyUnit getFirstAliveEnemy() {
+		for (EnemyUnit enemy : enemies) {
+			if (enemy.hp > 0) {
+				return enemy;
+			}
+		}
+		return null;
+	}
+	
+	private boolean isWin() {
+		for (EnemyUnit enemy : enemies) {
+			if (enemy.hp > 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private double getTypePower(int type) {
+		switch (type) {
+		case 1:
+			return 1.2;
+		case 2:
+			return 1;
+		case 3:
+			return 0.8;
+		default:
+			return 1;
+		}
+	}
+
 	public void addPlayer(Servent servent) {
 		FriendUnit u = generateFriendUnit(servent);
 		u.index = players.size();
