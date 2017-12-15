@@ -96,9 +96,23 @@
 		function createCardsButton(data) {
 			var friend = friendUnits[data.unitIndex];
 			var friendInfo = SERVENT_DB[friend.sid];
-			var btn = "<button class=\"btn btn-default\">";
-			btn += friendInfo.name + " - " + data.type;
+			var btn = "<button class=\"btn btn-lg "+btnColor(data.type)+"\">";
+			btn += friendInfo.name;
 			btn += "</button>";
+			return btn;
+		}
+		
+		function btnColor(type){
+			switch(type){
+				case 1:
+					return "btn-danger";
+				case 2:
+					return "btn-primary";
+				case 3:
+					return "btn-success";
+				default:
+					return "btn-default";
+			}
 		}
 	</script>
 	<script src="js/db.js"></script>
