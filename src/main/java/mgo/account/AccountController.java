@@ -7,6 +7,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
+import com.jfinal.kit.Kv;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
@@ -77,8 +78,9 @@ public class AccountController extends Controller {
 	@SuppressWarnings("unchecked")
 	public void getStone() {
 		User u = getSessionAttr("currentUser");
-
-		renderJson(Message.ok().put("stone", u.getStone()));
+		Kv kv = Message.ok();
+		kv.put("stone", u.getStone());
+		renderJson(kv);
 	}
 
 	@Clear(CheckLoginInterceptor.class)
