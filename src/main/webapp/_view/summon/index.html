@@ -11,21 +11,35 @@
 			<a class="btn btn-default" href="#" id="drawTen">召唤　10　次</a>
 		</div>
 		<div class="row" id="result">
+			<div class="col-sm-2 col-md-2" v-for="card in cards">
+				<div class="thumbnail" v-bind:class="[card.rareColorClass]">
+					<p>{{ card.name }}</p>
+					<p v-if="card.type == 'servent'">{{ card.typeName }}</p>
+					<p></p>
+					<p class="starColor">{{ card.rareSHOW }}</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var poolId = #(pool.id ??);
+		var app = new Vue({
+		  el: '#result',
+		  data: {
+			  cards:[]
+		  }
+		});
 		function generateCard(card) {
+			var result = {};
 			var cardInfo = getCardInfo(card.type, card.id);
-			var html = '<div class="col-sm-2 col-md-2"><div class="thumbnail rareColor'+cardInfo.rare+'">'
-			html += '<p>'+cardInfo.name+'</p>';
+			result.rareColorClass = 'rareColor'+cardInfo.rare;
+			result.name = cardInfo.name;
+			result.type = card.type;
 			if("servent"==card.type){
-				html += '<p>'+DATA_DB["class"][cardInfo.type]+'</p>';
+				result.typeName = DATA_DB["class"][cardInfo.type];
 			}
-			html += '<p></p>';
-			html += '<p class="starColor">'+rareSHOW[cardInfo.rare]+'</p>';
-			html += '</div></div>';
-			return html;
+			result.rareSHOW = rareSHOW[cardInfo.rare];
+			return result;
 		}
 		function getCardInfo(type,id){
 			return DATA_DB[type][id];
@@ -38,8 +52,9 @@
 					return;
 				}
 				updateUserStone();
-				var html = generateCard(data);
-				$("#result").html(html);
+				app.cards = [];
+				var card = generateCard(data);
+				app.cards.push(card);
 			});
 		});
 		$("#drawTen").click(function(e){
@@ -49,11 +64,11 @@
 					return;
 				}
 				updateUserStone();
-				var html = "";
+				app.cards = [];
 				for(var i=0;i<data.length;i++){
-					html += generateCard(data[i]);
+					var card = generateCard(data[i]);
+					app.cards.push(card);
 				}
-				$("#result").html(html);
 			});
 		});
 	</script>
