@@ -12,8 +12,8 @@
 		</div>
 		<div class="table-responsive">
 			<table class="table" id="resultTable">
-				<caption id="tableName">{{ title }}</caption>
-				<thead id="tableHead">
+				<caption>{{ title }}</caption>
+				<thead>
 					<tr>
 						<td>名称</td>
 						<td>稀有度</td>
@@ -25,7 +25,7 @@
 						</template>
 					</tr>
 				</thead>
-				<tbody id="tableBody">
+				<tbody>
 					<tr v-for="card in cards" v-bind:class="[card.rareColorClass]">
 						<td>{{ card.name }}</td>
 						<td class='starColor'>{{ card.rareSHOW }}</td>
