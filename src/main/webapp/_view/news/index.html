@@ -37,7 +37,7 @@
 			  date: '',
 			  content: '',
 		  }
-		})
+		});
 		$(".newsBtn").click(function(){
 			var id = $(this).attr("id");
 			$.post("news/getNewsDetail",{id:id},function(data){
