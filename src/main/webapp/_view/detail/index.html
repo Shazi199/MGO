@@ -12,33 +12,62 @@
 		</div>
 		<div class="table-responsive">
 			<table class="table" id="resultTable">
-				<caption id="tableName"></caption>
-				<thead id="tableHead"></thead>
-				<tbody id="tableBody"></tbody>
+				<caption id="tableName">{{ title }}</caption>
+				<thead id="tableHead">
+					<tr>
+						<td>名称</td>
+						<td>稀有度</td>
+						<td>等级</td>
+						<template v-if="type === 'servent'">
+						<td>职阶</td>
+						<td>ATK</td>
+						<td>HP</td>
+						</template>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+					<tr v-for="card in cards" v-bind:class="[card.rareColorClass]">
+						<td>{{ card.name }}</td>
+						<td class='starColor'>{{ card.rareSHOW }}</td>
+						<td>{{ card.level }}</td>
+						<template v-if="type === 'servent'">
+						<td>{{ card.className }}</td>
+						<td>{{ card.atk }}</td>
+						<td>{{ card.health }}</td>
+						</template>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
 	<script type="text/javascript">
+		var app = new Vue({
+		  el: '#resultTable',
+		  data: {
+			  title: '',
+			  type: '',
+			  cards:[]
+		  }
+		});
 		$("#servent").click(function(){
 			$("#resultTable").hide();
 			$.post("detail/loadServent",function(data){
-				$("#tableName").text("角色");
-				$("#tableHead").html("<tr><td>名称</td><td>稀有度</td><td>等级</td><td>职阶</td><td>ATK</td><td>HP</td></tr>");
-				var body = "";
+				app.cards = [];
+				app.title = "角色";
+				app.type = "servent";
 				for(var i=0;i<data.length;i++){
 					var row = data[i];
 					var info = DATA_DB["servent"][row.sid];
-					var gen = "<tr class='rareColor"+info.rare+"'>";
-					gen += "<td>"+info.name+"</td>"
-					gen += "<td class='starColor'>"+rareSHOW[info.rare]+"</td>"
-					gen += "<td>"+row.level+"</td>"
-					gen += "<td>"+DATA_DB["class"][info.type]+"</td>"
-					gen += "<td>"+(info.atk+row.level*info.atkRate)+"</td>"
-					gen += "<td>"+(info.health+row.level*info.healthRate)+"</td>"
-					gen += "</tr>"
-					body += gen;
+					var card = {};
+					card.rareColorClass = "rareColor"+info.rare;
+					card.name = info.name;
+					card.rareSHOW = rareSHOW[info.rare];
+					card.level = row.level;
+					card.className = DATA_DB["class"][info.type];
+					card.atk = info.atk+row.level*info.atkRate;
+					card.health = info.health+row.level*info.healthRate;
+					app.cards.push(card);
 				}
-				$("#tableBody").html(body);
 				$("#resultTable").show();
 			});
 			
@@ -47,20 +76,19 @@
 		$("#craft").click(function(){
 			$("#resultTable").hide();
 			$.post("detail/loadCraft",function(data){
-				$("#tableName").text("符卡");
-				$("#tableHead").html("<tr><td>名称</td><td>稀有度</td><td>等级</td></tr>");
-				var body = "";
+				app.cards = [];
+				app.title = "符卡";
+				app.type = "craft";
 				for(var i=0;i<data.length;i++){
 					var row = data[i];
 					var info = DATA_DB["craft"][row.sid];
-					var gen = "<tr class='rareColor"+info.rare+"'>";
-					gen += "<td>"+info.name+"</td>"
-					gen += "<td class='starColor'>"+rareSHOW[info.rare]+"</td>"
-					gen += "<td>"+row.level+"</td>"
-					gen += "</tr>"
-					body += gen;
+					var card = {};
+					card.rareColorClass = "rareColor"+info.rare;
+					card.name = info.name;
+					card.rareSHOW = rareSHOW[info.rare];
+					card.level = row.level;
+					app.cards.push(card);
 				}
-				$("#tableBody").html(body);
 				$("#resultTable").show();
 			});
 			
