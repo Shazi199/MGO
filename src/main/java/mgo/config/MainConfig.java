@@ -9,7 +9,8 @@ import com.jfinal.config.Routes;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.template.Engine;
 
@@ -57,11 +58,12 @@ public class MainConfig extends JFinalConfig {
 	@Override
 	public void configPlugin(Plugins me) {
 		me.add(new EhCachePlugin());
-		
-		C3p0Plugin c3p0Plugin = new C3p0Plugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
-		me.add(c3p0Plugin);
-		
-		ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
+
+		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
+		druidPlugin.setFilters("stat,wall");
+		me.add(druidPlugin);
+
+		ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
 		_MappingKit.mapping(activeRecordPlugin);
 		activeRecordPlugin.setBaseSqlTemplatePath(PathKit.getRootClassPath());
 		activeRecordPlugin.addSqlTemplate("user.sql");
@@ -83,8 +85,8 @@ public class MainConfig extends JFinalConfig {
 
 	@Override
 	public void configHandler(Handlers me) {
-		// TODO Auto-generated method stub
-
+		DruidStatViewHandler druidStatViewHandler = new DruidStatViewHandler("/manage/dbstat", new DruidStatViewAuth());
+		me.add(druidStatViewHandler);
 	}
 
 }

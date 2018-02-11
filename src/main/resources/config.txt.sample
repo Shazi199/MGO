@@ -6,3 +6,5 @@ password=localuser
 weibo_appid=1234567890
 weibo_secretid=1234567890
 weibo_url=mgo.com
+
+admin_username=localuser
