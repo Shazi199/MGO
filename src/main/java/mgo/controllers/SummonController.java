@@ -1,4 +1,4 @@
-package mgo.summon;
+package mgo.controllers;
 
 import java.util.Date;
 

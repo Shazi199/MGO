@@ -1,4 +1,4 @@
-package mgo.stage;
+package mgo.controllers;
 
 import java.util.List;
 

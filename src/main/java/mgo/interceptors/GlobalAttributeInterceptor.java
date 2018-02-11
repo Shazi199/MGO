@@ -1,4 +1,4 @@
-package mgo.common;
+package mgo.interceptors;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;

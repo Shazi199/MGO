@@ -1,6 +1,8 @@
-package mgo.index;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.IndexController;
 
 public class IndexRoutes extends Routes {
 

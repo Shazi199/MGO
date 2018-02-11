@@ -1,6 +1,8 @@
-package mgo.setting;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.SettingController;
 
 public class SettingRoutes extends Routes {
 

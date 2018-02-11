@@ -1,4 +1,4 @@
-package mgo.shop;
+package mgo.controllers;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;

@@ -1,4 +1,4 @@
-package mgo.detail;
+package mgo.controllers;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package mgo.index;
+package mgo.controllers;
 
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PropKit;
 
-import mgo.account.CheckLoginInterceptor;
+import mgo.interceptors.CheckLoginInterceptor;
 
 public class IndexController extends Controller {
 	

@@ -1,4 +1,4 @@
-package mgo.account;
+package mgo.controllers;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ import com.jfinal.kit.Kv;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
+import mgo.interceptors.CheckLoginInterceptor;
 import mgo.model.Oauth;
 import mgo.model.User;
 import mgo.util.Message;

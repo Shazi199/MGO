@@ -1,4 +1,4 @@
-package mgo.team;
+package mgo.controllers;
 
 import java.util.ArrayList;
 import java.util.List;

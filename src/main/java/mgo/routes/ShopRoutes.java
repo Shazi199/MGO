@@ -1,6 +1,8 @@
-package mgo.shop;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.ShopController;
 
 public class ShopRoutes extends Routes {
 

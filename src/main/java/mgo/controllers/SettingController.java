@@ -1,4 +1,4 @@
-package mgo.setting;
+package mgo.controllers;
 
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PropKit;

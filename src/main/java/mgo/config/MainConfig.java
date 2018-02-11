@@ -14,18 +14,18 @@ import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.template.Engine;
 
-import mgo.account.AccountRoutes;
-import mgo.account.CheckLoginInterceptor;
-import mgo.common.GlobalAttributeInterceptor;
-import mgo.detail.DetailRoutes;
-import mgo.index.IndexRoutes;
+import mgo.interceptors.CheckLoginInterceptor;
+import mgo.interceptors.GlobalAttributeInterceptor;
 import mgo.model._MappingKit;
-import mgo.news.NewsRoutes;
-import mgo.setting.SettingRoutes;
-import mgo.shop.ShopRoutes;
-import mgo.stage.StageRoutes;
-import mgo.summon.SummonRoutes;
-import mgo.team.TeamRoutes;
+import mgo.routes.AccountRoutes;
+import mgo.routes.DetailRoutes;
+import mgo.routes.IndexRoutes;
+import mgo.routes.NewsRoutes;
+import mgo.routes.SettingRoutes;
+import mgo.routes.ShopRoutes;
+import mgo.routes.StageRoutes;
+import mgo.routes.SummonRoutes;
+import mgo.routes.TeamRoutes;
 
 public class MainConfig extends JFinalConfig {
 

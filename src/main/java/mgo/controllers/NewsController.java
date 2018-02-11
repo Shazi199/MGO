@@ -1,4 +1,4 @@
-package mgo.news;
+package mgo.controllers;
 
 import java.util.List;
 

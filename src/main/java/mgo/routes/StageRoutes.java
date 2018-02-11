@@ -1,6 +1,9 @@
-package mgo.stage;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.BattleController;
+import mgo.controllers.StageController;
 
 public class StageRoutes extends Routes {
 

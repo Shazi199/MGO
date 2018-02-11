@@ -1,6 +1,8 @@
-package mgo.detail;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.DetailController;
 
 public class DetailRoutes extends Routes {
 

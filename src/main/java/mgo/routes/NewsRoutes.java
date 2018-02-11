@@ -1,6 +1,8 @@
-package mgo.news;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.NewsController;
 
 public class NewsRoutes extends Routes {
 

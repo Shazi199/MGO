@@ -1,6 +1,8 @@
-package mgo.team;
+package mgo.routes;
 
 import com.jfinal.config.Routes;
+
+import mgo.controllers.TeamController;
 
 public class TeamRoutes extends Routes {
 
