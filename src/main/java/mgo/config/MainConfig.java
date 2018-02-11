@@ -20,6 +20,7 @@ import mgo.model._MappingKit;
 import mgo.routes.AccountRoutes;
 import mgo.routes.DetailRoutes;
 import mgo.routes.IndexRoutes;
+import mgo.routes.ManageRoutes;
 import mgo.routes.NewsRoutes;
 import mgo.routes.SettingRoutes;
 import mgo.routes.ShopRoutes;
@@ -47,6 +48,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(new NewsRoutes());
 		me.add(new SettingRoutes());
 		me.add(new StageRoutes());
+		me.add(new ManageRoutes());
 	}
 
 	@Override
