@@ -12,6 +12,7 @@ public class IndexController extends Controller {
 	public void index() {
 		setAttr("weibo_appid", PropKit.get("weibo_appid"));
 		setAttr("weibo_url", PropKit.get("weibo_url"));
+		setAttr("captcha_enable", PropKit.getBoolean("captcha_enable"));
 		renderTemplate("index.html");
 	}
 

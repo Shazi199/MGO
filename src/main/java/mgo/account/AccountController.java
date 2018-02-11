@@ -19,7 +19,7 @@ public class AccountController extends Controller {
 
 	@Clear(CheckLoginInterceptor.class)
 	public void login() {
-		if (!validateCaptcha("randomCode")) {
+		if (PropKit.getBoolean("captcha_enable") && !validateCaptcha("randomCode")) {
 			renderJson(Message.fail("验证码错误"));
 			return;
 		}
