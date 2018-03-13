@@ -1,0 +1,11 @@
+CREATE TABLE `oauth` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`authid` VARCHAR(255) NOT NULL,
+	`uid` BIGINT(20) NOT NULL,
+	`type` VARCHAR(255) NOT NULL,
+	`token` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

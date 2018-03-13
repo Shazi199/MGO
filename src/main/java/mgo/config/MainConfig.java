@@ -64,6 +64,9 @@ public class MainConfig extends JFinalConfig {
 		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
 		druidPlugin.setFilters("stat,wall");
 		me.add(druidPlugin);
+		
+		FlywayPlugin flywayPlugin = new FlywayPlugin(druidPlugin);
+		me.add(flywayPlugin);
 
 		ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
 		_MappingKit.mapping(activeRecordPlugin);
