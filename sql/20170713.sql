@@ -1,4 +1,0 @@
-ALTER TABLE `craft`
-	ADD COLUMN `exp` INT NOT NULL DEFAULT '0' AFTER `phase`;
-ALTER TABLE `user`
-	ADD COLUMN `cost` INT(11) NOT NULL DEFAULT '0' AFTER `stone`;
