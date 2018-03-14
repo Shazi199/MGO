@@ -79,14 +79,14 @@ public class MainConfig extends JFinalConfig {
 		ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
 		_MappingKit.mapping(activeRecordPlugin);
 		activeRecordPlugin.setBaseSqlTemplatePath(PathKit.getRootClassPath());
-		activeRecordPlugin.addSqlTemplate("user.sql");
-		activeRecordPlugin.addSqlTemplate("servent.sql");
-		activeRecordPlugin.addSqlTemplate("craft.sql");
-		activeRecordPlugin.addSqlTemplate("teamMember.sql");
-		activeRecordPlugin.addSqlTemplate("team.sql");
-		activeRecordPlugin.addSqlTemplate("news.sql");
-		activeRecordPlugin.addSqlTemplate("oauth.sql");
-		activeRecordPlugin.addSqlTemplate("stage.sql");
+		activeRecordPlugin.addSqlTemplate("sql/user.sql");
+		activeRecordPlugin.addSqlTemplate("sql/servent.sql");
+		activeRecordPlugin.addSqlTemplate("sql/craft.sql");
+		activeRecordPlugin.addSqlTemplate("sql/teamMember.sql");
+		activeRecordPlugin.addSqlTemplate("sql/team.sql");
+		activeRecordPlugin.addSqlTemplate("sql/news.sql");
+		activeRecordPlugin.addSqlTemplate("sql/oauth.sql");
+		activeRecordPlugin.addSqlTemplate("sql/stage.sql");
 		me.add(activeRecordPlugin);
 	}
 
