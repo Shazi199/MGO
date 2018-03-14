@@ -1,5 +1,8 @@
 package mgo.config;
 
+import com.alibaba.druid.filter.stat.StatFilter;
+import com.alibaba.druid.wall.WallConfig;
+import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -62,7 +65,12 @@ public class MainConfig extends JFinalConfig {
 		me.add(new EhCachePlugin());
 
 		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password"));
-		druidPlugin.setFilters("stat,wall");
+		WallFilter wallFilter = new WallFilter();
+		WallConfig wallConfig = new WallConfig();
+		wallConfig.setCommentAllow(true);
+		wallFilter.setConfig(wallConfig);
+		druidPlugin.addFilter(wallFilter);
+		druidPlugin.addFilter(new StatFilter());
 		me.add(druidPlugin);
 		
 		FlywayPlugin flywayPlugin = new FlywayPlugin(druidPlugin);

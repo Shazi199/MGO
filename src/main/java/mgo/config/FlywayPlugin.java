@@ -17,10 +17,12 @@ public class FlywayPlugin implements IPlugin {
 	public boolean start() {
 		try {
 			Flyway flyway = new Flyway();
+			flyway.setTable("db_version");
 			flyway.setDataSource(this.dataSourceProvider.getDataSource());
 			flyway.migrate();
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
