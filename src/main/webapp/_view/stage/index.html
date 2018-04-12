@@ -42,12 +42,12 @@
 		
 		$("#startBattle").click(function(){
 			var teamId = $("[name=teamSelect]:checked").val();
-			$.post("stage/startBattle",{"stageId":selectStageId,"teamId":teamId},function(data){
+			$.post("#(homeurl ??)/stage/startBattle",{"stageId":selectStageId,"teamId":teamId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 					return;
 				}else{
-					location = "stage";
+					location = "#(homeurl ??)/stage";
 				}
 			},"json");
 		});

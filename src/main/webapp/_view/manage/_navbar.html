@@ -1,0 +1,28 @@
+#define navbar(activePage)
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">MGO</a>
+		</div>
+		#if(currentUser != null)
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="#(activePage=='stage'?'active':'')"><a href="#(homeurl ??)/manage/stage">关卡</a></li>
+				<li class="#(activePage=='user'?'active':'')"><a href="#(homeurl ??)/manage/user">用户</a></li>
+				<li class="#(activePage=='news'?'active':'')"><a href="#(homeurl ??)/manage/news">公告</a></li>
+				<li class="#(activePage=='setting'?'active':'')"><a href="#(homeurl ??)/manage/setting">设置</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><p class="navbar-text">#(currentUser.nickname ??)</p></li>
+				<li><button id="logout" type="button" class="btn btn-info navbar-btn">退出后台</button></li>
+			</ul>
+		</div>
+		#end
+	</div>
+</nav>
+<script type="text/javascript">
+	$("#logout").click(function(e){
+		location = "#(homeurl ??)/";
+	});
+</script>
+#end

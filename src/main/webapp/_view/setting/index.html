@@ -11,10 +11,20 @@
 				绑定微博
 			</a>
 		</div>
+		#if(currentUser.username == admin_username)
+		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+			<a href="#(homeurl ??)/manage" target="_self" class="btn btn-default btn-primary" type="button">
+				后台管理
+			</a>
+		</div>
+		#end
 	</div>
-	<script type="text/javascript">
-	</script>
 #end
 
 #define css()
+<style type="text/css">
+	.btn-group {
+	  margin: 5px;
+	}
+</style>
 #end

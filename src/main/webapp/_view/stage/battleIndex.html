@@ -48,7 +48,7 @@
 		}
 		
 		function getEnemiesInfo() {
-			$.post("battle/getEnemiesInfo",function(data){
+			$.post("#(homeurl ??)/battle/getEnemiesInfo",function(data){
 				$("#enemyUnits tr").remove();
 				enemyUnits = data;
 				for(var i=0;i<data.length;i++){
@@ -58,7 +58,7 @@
 		}
 		
 		function getFriendsInfo(callback) {
-			$.post("battle/getFriendsInfo",function(data){
+			$.post("#(homeurl ??)/battle/getFriendsInfo",function(data){
 				$("#friendUnits tr").remove();
 				friendUnits = data;
 				for(var i=0;i<data.length;i++){
@@ -71,7 +71,7 @@
 		}
 		
 		function getCardsInfo() {
-			$.post("battle/getCardsInfo",function(data){
+			$.post("#(homeurl ??)/battle/getCardsInfo",function(data){
 				$("#commandCards button").remove();
 				commandCards = data;
 				for(var i=0;i<data.length;i++){
@@ -161,7 +161,7 @@
 		}
 		
 		function sendCommand() {
-			$.post("battle/run",{"selectCards":selectedCards.join(",")},function(data){
+			$.post("#(homeurl ??)/battle/run",{"selectCards":selectedCards.join(",")},function(data){
 				var isEndBattle = false;
 				for(var i=0;i<data.length;i++){
 					if(data[i].log=="win"){
@@ -189,12 +189,12 @@
 		}
 		
 		function endBattle() {
-			$.post("battle/endBattle",function(data){
-				location = "stage";
+			$.post("#(homeurl ??)/battle/endBattle",function(data){
+				location = "#(homeurl ??)/stage";
 			});
 		}
 	</script>
-	<script src="js/db.js"></script>
+	<script src="#(homeurl ??)/js/db.js"></script>
 #end
 
 #define css()

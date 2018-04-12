@@ -40,7 +40,7 @@
 		});
 		$(".newsBtn").click(function(){
 			var id = $(this).attr("id");
-			$.post("news/getNewsDetail",{id:id},function(data){
+			$.post("#(homeurl ??)/news/getNewsDetail",{id:id},function(data){
 				if(data!=null){
 					app.title = data.title;
 					app.date = data.create_time;

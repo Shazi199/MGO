@@ -10,3 +10,5 @@ weibo_secretid=1234567890
 weibo_url=mgo.com
 
 admin_username=localuser
+
+homeurl=mgo.com

@@ -46,7 +46,7 @@
 		}
 		var rareSHOW={"1":"★","2":"★★","3":"★★★","4":"★★★★","5":"★★★★★"};
 		$("#drawOne").click(function(e){
-			$.post("summon/drawOne",{"poolId":poolId},function(data){
+			$.post("#(homeurl ??)/summon/drawOne",{"poolId":poolId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 					return;
@@ -58,7 +58,7 @@
 			});
 		});
 		$("#drawTen").click(function(e){
-			$.post("summon/drawTen",{"poolId":poolId},function(data){
+			$.post("#(homeurl ??)/summon/drawTen",{"poolId":poolId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 					return;
@@ -72,7 +72,7 @@
 			});
 		});
 	</script>
-	<script src="js/db.js"></script>
+	<script src="#(homeurl ??)/js/db.js"></script>
 #end
 
 #define css()

@@ -51,7 +51,7 @@
 		});
 		$("#servent").click(function(){
 			$("#resultTable").hide();
-			$.post("detail/loadServent",function(data){
+			$.post("#(homeurl ??)/detail/loadServent",function(data){
 				app.cards = [];
 				app.title = "角色";
 				app.type = "servent";
@@ -75,7 +75,7 @@
 		});
 		$("#craft").click(function(){
 			$("#resultTable").hide();
-			$.post("detail/loadCraft",function(data){
+			$.post("#(homeurl ??)/detail/loadCraft",function(data){
 				app.cards = [];
 				app.title = "符卡";
 				app.type = "craft";
@@ -96,7 +96,7 @@
 		});
 		var rareSHOW={"1":"★","2":"★★","3":"★★★","4":"★★★★","5":"★★★★★"};
 	</script>
-	<script src="js/db.js"></script>
+	<script src="#(homeurl ??)/js/db.js"></script>
 #end
 
 #define css()

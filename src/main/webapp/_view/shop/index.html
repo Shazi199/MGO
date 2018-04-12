@@ -12,7 +12,7 @@
 	</div>
 	<script type="text/javascript">
 		$("#buy140").click(function(){
-			$.post("shop/buy140",function(data){
+			$.post("#(homeurl ??)/shop/buy140",function(data){
 				if(data.isOk){
 					updateUserStone();
 					alert(data.msg)

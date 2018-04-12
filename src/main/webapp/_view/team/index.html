@@ -78,7 +78,7 @@
     	var myServents = [];
     	var myTeams = {};
 		$(function() {
-		    $.post("detail/loadServent",function(data){
+		    $.post("#(homeurl ??)/detail/loadServent",function(data){
 		    	myServents = data;
 		    	for (var i = 0; i < data.length; i++) {
 					var row = data[i];
@@ -103,7 +103,7 @@
 		});
 		function loadTeam() {
 			$("#tableBody").html("");
-		    $.post("team/loadTeam",function(data){
+		    $.post("#(homeurl ??)/team/loadTeam",function(data){
 		    	var result = "";
 		    	for (var i = 0; i < data.length; i++) {
 		    		var row = data[i];
@@ -137,7 +137,7 @@
     		$('#TeamEditor').modal('show');
 		}
 		function showDeleteTeam(teamId) {
-			$.post("team/deleteTeam",{teamId:teamId},function(data){
+			$.post("#(homeurl ??)/team/deleteTeam",{teamId:teamId},function(data){
 				if(data.isFail){
 					alert(data.msg);
 				}else{
@@ -155,7 +155,7 @@
 					teamServent.push(serventId);
 				}
 			}			
-			$.post("team/saveOrUpdateTeam",
+			$.post("#(homeurl ??)/team/saveOrUpdateTeam",
 					{
 						teamId:teamId,
 						teamName:teamName,
@@ -209,7 +209,7 @@
 			"5" : "★★★★★"
 		};
 	</script>
-	<script src="js/db.js"></script>
+	<script src="#(homeurl ??)/js/db.js"></script>
 #end
 
 #define css()

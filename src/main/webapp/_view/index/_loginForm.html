@@ -9,7 +9,7 @@
 		#if(captcha_enable)
 		<label for="randomCode" class="sr-only">验证码</label>
 		<input type="text" id="randomCode" class="form-control" placeholder="验证码" required autocomplete="off">
-		<img id="captchaImage" src="captcha" onclick="refreshCode()"/>
+		<img id="captchaImage" src="#(homeurl ??)/captcha" onclick="refreshCode()"/>
 		#end
 		<div id="loginInfo" class="alert alert-danger" role="alert" style="display:none"></div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
@@ -23,7 +23,7 @@
 		var userpass = $("#inputPassword").val();
 		var randomCode = $("#randomCode").val();
 		$("#loginInfo").hide();
-		$.post("account/login",{username:username,userpass:userpass,randomCode:randomCode},function(data){
+		$.post("#(homeurl ??)/account/login",{username:username,userpass:userpass,randomCode:randomCode},function(data){
 			if(data.isFail){
 				$("#loginInfo").html(data.msg);
 				$("#loginInfo").slideDown();
@@ -36,11 +36,11 @@
 	});
 	
 	function refreshCode() {
-		$("#captchaImage")[0].src = "captcha?rnd="+new Date().getTime();
+		$("#captchaImage")[0].src = "#(homeurl ??)/captcha?rnd="+new Date().getTime();
 	}
 	
 	function toReg(){
-		location="/reg";
+		location="#(homeurl ??)/reg";
 	}
 </script>
 #end
