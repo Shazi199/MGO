@@ -6,10 +6,8 @@
 	#@navbar("summon")
 	<div class="container">
 		<h1>#(pool.name ??)</h1>
-		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
-			<button class="btn btn-primary" id="drawOne">召唤　1　次</button>
-			<button class="btn btn-primary" id="drawTen">召唤　10　次</button>
-		</div>
+		<button class="btn btn-primary" id="drawOne">召唤　1　次</button>
+		<button class="btn btn-primary" id="drawTen">召唤　10　次</button>
 		<div class="row" id="result">
 			<div class="col-sm-2 col-md-2" v-for="card in cards">
 				<div class="thumbnail" v-bind:class="[card.rareColorClass]">

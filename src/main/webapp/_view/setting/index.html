@@ -6,17 +6,13 @@
 	#@navbar("setting")
 	<div class="container">
 		<h1>设置</h1>
-		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
-			<a href="https://api.weibo.com/oauth2/authorize?client_id=#(weibo_appid ??)&response_type=code&redirect_uri=http://#(weibo_url ??)/account/weiboBinding" target="_blank" class="btn btn-default btn-danger" type="button" id="weiboBinding">
-				绑定微博
-			</a>
-		</div>
+		<a href="https://api.weibo.com/oauth2/authorize?client_id=#(weibo_appid ??)&response_type=code&redirect_uri=http://#(weibo_url ??)/account/weiboBinding" target="_blank" class="btn btn-default btn-danger" type="button" id="weiboBinding">
+			绑定微博
+		</a>
 		#if(currentUser.username == admin_username)
-		<div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
-			<a href="#(homeurl ??)/manage" target="_self" class="btn btn-default btn-primary" type="button">
-				后台管理
-			</a>
-		</div>
+		<a href="#(homeurl ??)/manage" target="_self" class="btn btn-default btn-primary" type="button">
+			后台管理
+		</a>
 		#end
 	</div>
 #end
