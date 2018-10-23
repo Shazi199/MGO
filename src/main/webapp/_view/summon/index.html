@@ -8,13 +8,19 @@
 		<h1>#(pool.name ??)</h1>
 		<button class="btn btn-primary" id="drawOne">召唤　1　次</button>
 		<button class="btn btn-primary" id="drawTen">召唤　10　次</button>
-		<div class="row" id="result">
-			<div class="col-sm-2 col-md-2" v-for="card in cards">
-				<div class="thumbnail" v-bind:class="[card.rareColorClass]">
-					<p>{{ card.name }}</p>
-					<p v-if="card.type == 'servent'">{{ card.typeName }}</p>
-					<p></p>
-					<p class="starColor">{{ card.rareSHOW }}</p>
+		<div class="card-deck-wrapper" id="result">
+			<div class="card-deck">
+                <div class="col-sm-3" v-for="card in cards">
+					<div class="card" v-bind:class="[card.rareColorClass]">
+	                    <img class="card-img-top" src="#(homeurl ??)/img/temp200x150.png">
+	                    <div class="card-block">
+							<h4 class="card-title">{{ card.name }}</h4>
+							<p class="card-text" v-if="card.type == 'servent'">{{ card.typeName }}</p>
+						</div>
+						<div class="card-footer">
+	                        <p class="starColor">{{ card.rareSHOW }}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -74,4 +80,9 @@
 #end
 
 #define css()
+<style type="text/css">
+    #result .card {
+        margin-top: 5px;
+    }
+</style>
 #end
