@@ -8,7 +8,7 @@
 		<h1>一览</h1>
 		<button class="btn btn-primary" id="servent">角色</button>
 		<button class="btn btn-primary" id="craft">符卡</button>
-		<div class="table-responsive">
+		<div class="table-responsive mainTable">
 			<table class="table table-sm table-hover table-bordered" id="resultTable">
 				<caption>{{ title }}</caption>
 				<thead>
@@ -98,4 +98,9 @@
 #end
 
 #define css()
+<style type="text/css">
+    .mainTable {
+        margin-top: 5px;
+    }
+</style>
 #end

@@ -7,8 +7,8 @@
 	<div class="container">
 		<h1>队伍编成</h1>
 		<button class="btn btn-primary" id="createTeam">创建队伍</button>
-		<div class="table-responsive">
-			<table class="table" id="resultTable">
+		<div class="table-responsive mainTable">
+			<table class="table table-sm table-hover table-bordered" id="resultTable">
 				<thead id="tableHead">
 					<tr>
 						<td>队伍名</td>
@@ -211,4 +211,9 @@
 #end
 
 #define css()
+<style type="text/css">
+    .mainTable {
+        margin-top: 5px;
+    }
+</style>
 #end
