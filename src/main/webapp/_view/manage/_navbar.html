@@ -1,24 +1,18 @@
 #define navbar(activePage)
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">MGO</a>
-		</div>
-		#if(currentUser != null)
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="#(activePage=='stage'?'active':'')"><a href="#(homeurl ??)/manage/stage">关卡</a></li>
-				<li class="#(activePage=='user'?'active':'')"><a href="#(homeurl ??)/manage/user">用户</a></li>
-				<li class="#(activePage=='news'?'active':'')"><a href="#(homeurl ??)/manage/news">公告</a></li>
-				<li class="#(activePage=='setting'?'active':'')"><a href="#(homeurl ??)/manage/setting">设置</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><p class="navbar-text">#(currentUser.nickname ??)</p></li>
-				<li><button id="logout" type="button" class="btn btn-info navbar-btn">退出后台</button></li>
-			</ul>
-		</div>
-		#end
-	</div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="#">MGO</a>
+	#if(currentUser != null)
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item #(activePage=='stage'?'active':'')"><a class="nav-link" href="#(homeurl ??)/manage/stage">关卡</a></li>
+		<li class="nav-item #(activePage=='user'?'active':'')"><a class="nav-link" href="#(homeurl ??)/manage/user">用户</a></li>
+		<li class="nav-item #(activePage=='news'?'active':'')"><a class="nav-link" href="#(homeurl ??)/manage/news">公告</a></li>
+		<li class="nav-item #(activePage=='setting'?'active':'')"><a class="nav-link" href="#(homeurl ??)/manage/setting">设置</a></li>
+	</ul>
+	<ul class="navbar-nav">
+		<li class="nav-item"><span class="navbar-brand">#(currentUser.nickname ??)</span></li>
+		<li class="nav-item"><button id="logout" type="button" class="btn btn-info navbar-btn">退出后台</button></li>
+	</ul>
+	#end
 </nav>
 <script type="text/javascript">
 	$("#logout").click(function(e){
