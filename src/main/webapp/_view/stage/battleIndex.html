@@ -115,7 +115,7 @@
 		function createCardsButton(data, index) {
 			var friend = friendUnits[data.unitIndex];
 			var friendInfo = SERVENT_DB[friend.sid];
-			var btn = "<button class=\"btn btn-lg "+btnColor(data.type)+"\" id=\"card_"+index+"\" onclick=\"cardSelect(this)\">";
+			var btn = "<button type=\"button\" class=\"btn btn-lg "+btnColor(data.type)+"\" id=\"card_"+index+"\" onclick=\"cardSelect(this)\">";
 			btn += friendInfo.name;
 			btn += "</button>";
 			return btn;
@@ -213,8 +213,11 @@
 .card {
     margin-top:10px;
 }
-#commandCards,#battleLog {
+#battleLog {
     margin-bottom:1rem;
+}
+#commandCards .btn {
+    margin: 5px;
 }
 </style>
 #end
