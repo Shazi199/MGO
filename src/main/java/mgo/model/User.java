@@ -7,17 +7,5 @@ import mgo.model.base.BaseUser;
  */
 @SuppressWarnings("serial")
 public class User extends BaseUser<User> {
-	public User findByUsername(String username) {
-		if (username == null) {
-			return null;
-		}
-		return findFirst(getSql("findUserByUsername"), username);
-	}
 
-	public User findByOauth(String authid, String type) {
-		if (authid == null || type == null) {
-			return null;
-		}
-		return findFirst(getSql("findUserByOauth"), authid, type);
-	}
 }

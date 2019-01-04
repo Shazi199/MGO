@@ -1,7 +1,5 @@
 package mgo.model;
 
-import java.util.List;
-
 import mgo.model.base.BaseStage;
 
 /**
@@ -9,7 +7,5 @@ import mgo.model.base.BaseStage;
  */
 @SuppressWarnings("serial")
 public class Stage extends BaseStage<Stage> {
-	public List<Stage> findStagesByParentId(int parentId) {
-		return find(getSql("findStagesByParentId"), parentId);
-	}
+
 }

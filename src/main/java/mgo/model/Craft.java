@@ -1,7 +1,5 @@
 package mgo.model;
 
-import java.util.List;
-
 import mgo.model.base.BaseCraft;
 
 /**
@@ -9,7 +7,5 @@ import mgo.model.base.BaseCraft;
  */
 @SuppressWarnings("serial")
 public class Craft extends BaseCraft<Craft> {
-	public List<Craft> findCraftsByUserid(long userId) {
-		return find(getSql("findCraftsByUserid"), userId);
-	}
+
 }

@@ -2,13 +2,23 @@ package mgo.controllers;
 
 import java.util.List;
 
+import com.jfinal.aop.Inject;
 import com.jfinal.core.Controller;
 
 import mgo.model.Craft;
 import mgo.model.Servent;
 import mgo.model.User;
+import mgo.service.CraftService;
+import mgo.service.ServentService;
 
 public class DetailController extends Controller {
+    
+    @Inject
+    private CraftService craftService;
+    
+    @Inject
+    private ServentService serventService;
+    
 	public void index() {
 		renderTemplate("index.html");
 	}
@@ -16,7 +26,7 @@ public class DetailController extends Controller {
 	public void loadServent() {
 		User u = getSessionAttr("currentUser");
 
-		List<Servent> datas = new Servent().findServentsByUserid(u.getId());
+		List<Servent> datas = serventService.findServentsByUserid(u.getId());
 		setAttr("datas", datas);
 		
 		renderJson(datas);
@@ -25,7 +35,7 @@ public class DetailController extends Controller {
 	public void loadCraft() {
 		User u = getSessionAttr("currentUser");
 
-		List<Craft> datas = new Craft().findCraftsByUserid(u.getId());
+		List<Craft> datas = craftService.findCraftsByUserid(u.getId());
 		setAttr("datas", datas);
 		
 		renderJson(datas);

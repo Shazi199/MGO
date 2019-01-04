@@ -37,6 +37,7 @@ public class MainConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
 		PropKit.use("config.txt");
 		me.setDevMode(PropKit.getBoolean("devMode"));
+		me.setInjectDependency(true);
 		Data.instance.init();
 	}
 

@@ -7,10 +7,5 @@ import mgo.model.base.BaseOauth;
  */
 @SuppressWarnings("serial")
 public class Oauth extends BaseOauth<Oauth> {
-	public Oauth findOauthByType(long uid, String type) {
-		if (type == null) {
-			return null;
-		}
-		return findFirst(getSql("findOauthByType"), uid, type);
-	}
+
 }

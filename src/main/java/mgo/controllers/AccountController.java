@@ -5,6 +5,7 @@ import java.util.Date;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
+import com.jfinal.aop.Inject;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.Kv;
@@ -14,9 +15,16 @@ import com.jfinal.plugin.activerecord.tx.Tx;
 import mgo.interceptors.CheckLoginInterceptor;
 import mgo.model.Oauth;
 import mgo.model.User;
+import mgo.service.OauthService;
+import mgo.service.UserService;
 import mgo.util.Message;
 
 public class AccountController extends Controller {
+    
+    @Inject
+    private OauthService oauthService;
+    @Inject
+    private UserService userService;
 
 	@Clear(CheckLoginInterceptor.class)
 	public void login() {
@@ -27,7 +35,7 @@ public class AccountController extends Controller {
 		String username = getPara("username");
 		String userpass = getPara("userpass");
 
-		User u = new User().findByUsername(username);
+		User u = userService.findByUsername(username);
 		if (u != null && u.getUserpass().equals(userpass)) {
 			u.setLastlogin(new Date());
 			u.update();
@@ -56,7 +64,7 @@ public class AccountController extends Controller {
 		String email = getPara("email");
 		String nickname = getPara("nickname");
 
-		User u = new User().findByUsername(username);
+		User u = userService.findByUsername(username);
 		if (u != null) {
 			renderJson(Message.fail("用户名已存在"));
 			return;
@@ -95,7 +103,7 @@ public class AccountController extends Controller {
 
 		JSONObject object = JSONObject.parseObject(content);
 		String uid = object.getString("uid");
-		User u = new User().findByOauth(uid, "weibo");
+		User u = userService.findByOauth(uid, "weibo");
 
 		if (u != null) {
 			u.setLastlogin(new Date());
@@ -122,7 +130,7 @@ public class AccountController extends Controller {
 		JSONObject object = JSONObject.parseObject(content);
 		String uid = object.getString("uid");
 		String token = object.getString("access_token");
-		Oauth oauth = new Oauth().findOauthByType(u.getId(), "weibo");
+		Oauth oauth = oauthService.findOauthByType(u.getId(), "weibo");
 		if (oauth == null) {
 			oauth = new Oauth();
 			oauth.setAuthid(uid);

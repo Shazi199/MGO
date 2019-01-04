@@ -7,5 +7,5 @@ import mgo.model.base.BaseItem;
  */
 @SuppressWarnings("serial")
 public class Item extends BaseItem<Item> {
-	
+
 }

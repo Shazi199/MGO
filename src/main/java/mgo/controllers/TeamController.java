@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Inject;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.tx.Tx;
@@ -12,9 +13,17 @@ import mgo.model.Servent;
 import mgo.model.Team;
 import mgo.model.TeamMember;
 import mgo.model.User;
+import mgo.service.TeamMemberService;
+import mgo.service.TeamService;
 import mgo.util.Message;
 
 public class TeamController extends Controller {
+    
+    @Inject
+    private TeamService teamService;
+    @Inject
+    private TeamMemberService teamMemberService;
+    
 	public void index() {
 		renderTemplate("index.html");
 	}
@@ -22,7 +31,7 @@ public class TeamController extends Controller {
 	public void loadTeam() {
 		User u = getSessionAttr("currentUser");
 		
-		List<Team> datas = new Team().findTeamsByUserid(u.getId());
+		List<Team> datas = teamService.findTeamsByUserid(u.getId());
 		setAttr("datas", datas);
 		
 		renderJson(datas);
@@ -41,7 +50,7 @@ public class TeamController extends Controller {
 		}
 		
 		team.delete();
-		new TeamMember().deleteTeamMembersByTeamId(teamId);
+		teamMemberService.deleteTeamMembersByTeamId(teamId);
 		renderJson(Message.ok());
 	}
 	
@@ -102,7 +111,7 @@ public class TeamController extends Controller {
 			team.setTeamname(teamName);
 			team.update();
 			
-			List<TeamMember> oldMembers = new TeamMember().findTeamMembersByTeamId(teamId);
+			List<TeamMember> oldMembers = teamMemberService.findTeamMembersByTeamId(teamId);
 			for (int i = 0; i < oldMembers.size(); i++) {
 				oldMembers.get(i).delete();
 			}
