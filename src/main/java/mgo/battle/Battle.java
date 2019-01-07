@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import mgo.config.Data;
 import mgo.model.Servent;
+import mgo.util.Rand;
 
 public class Battle {
 	public List<FriendUnit> players = new ArrayList<FriendUnit>();
@@ -40,12 +41,7 @@ public class Battle {
 				break;
 			}
 			Card card = currentCards.get(cardIndex);
-			int damage = (int) (card.unit.atk * getTypePower(card.getType()));
-			target.hp -= damage;
-			Result result = new Result();
-			result.from = card.unit.index;
-			result.to = target.index;
-			result.log = String.valueOf(damage);
+			Result result = attack(card.unit, target, card.getType());
 			results.add(result);
 			if (target.hp < 0) {
 				target.hp = 0;
@@ -63,6 +59,18 @@ public class Battle {
 
 		drawCard();
 		return results;
+	}
+	
+	private Result attack(Unit attacker, Unit defender, int cardType) {
+	    Result result = new Result();
+	    
+        int damage = (int) (attacker.atk * getTypePower(cardType) * Rand.getInt(80, 120) / 100.0);
+	    defender.hp -= damage;
+	    result.from = attacker.index;
+        result.to = defender.index;
+        result.log = String.valueOf(damage);
+	    
+	    return result;
 	}
 	
 	private EnemyUnit getFirstAliveEnemy() {
